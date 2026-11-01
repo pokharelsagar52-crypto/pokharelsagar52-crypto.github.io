@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SN Cold Store | Bokse Chowk, Gaighat</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f7f7f7;
+            color: #111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* --- PROFESSIONAL ANIMATED LED SIGN BOARD STYLING --- */
+        .led-sign-board {
+            width: 100%;
+            background: #111;
+            border: 6px solid #222;
+            border-radius: 12px;
+            padding: 22px 15px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3), inset 0 0 15px rgba(0,0,0,0.8);
+            overflow: hidden;
+        }
+
+        .led-sign-board::before {
+            content: '';
+            position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            pointer-events: none;
+            animation: borderPulse 1.5s infinite alternate;
+        }
+
+        @keyframes borderPulse {
+            0% { opacity: 0.3; border-color: #ff3333; box-shadow: 0 0 5px #ff3333; }
+            33% { opacity: 0.8; border-color: #33ff33; box-shadow: 0 0 8px #33ff33; }
+            66% { opacity: 0.5; border-color: #33ffff; box-shadow: 0 0 5px #33ffff; }
+            100% { opacity: 0.9; border-color: #ff33ff; box-shadow: 0 0 10px #ff33ff; }
+        }
+
+        .sign-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 150, 0, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .sign-hours-line1 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffb703;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(255, 183, 3, 0.7);
+            margin-bottom: 3px;
+        }
+
+        .sign-hours-line2 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #00f5d4;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 245, 212, 0.8);
+        }
+
+        /* Bulk & Event Notice Banner */
+        .event-banner {
+            width: 100%;
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 8px;
+            padding: 12px 16px;
+            text-align: center;
+            font-size: 13px;
+            color: #856404;
+            font-weight: 500;
+            line-height: 1.4;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .event-banner a {
+            color: #d66f00;
+            font-weight: 700;
+            text-decoration: underline;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .sub-text {
+            font-size: 13px;
+            color: #666;
+            text-align: center;
+            margin-top: 2px;
+        }
+
+        /* Action Buttons */
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: #f77f00;
+            color: white;
+            box-shadow: 0 4px 12px rgba(247, 127, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #d66f00;
+        }
+
+        .btn-secondary {
+            background-color: #212529;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #343a40;
+        }
+
+        /* Categories Section */
+        .categories-header {
+            width: 100%;
+            font-size: 13px;
+            font-weight: 700;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-card {
+            width: 100%;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            cursor: pointer;
+            transition: border-color 0.2s ease;
+        }
+
+        .category-card:hover {
+            border-color: #f77f00;
+        }
+
+        .category-main-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .category-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-icon {
+            font-size: 22px;
+            background: #f1f3f5;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .category-info h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .category-info p {
+            font-size: 13px;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .stock-badge {
+            font-size: 12px;
+            font-weight: 500;
+            color: #555;
+            background: #f1f3f5;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        /* Dropdown Panel Content */
+        .dropdown-content {
+            display: none;
+            width: 100%;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #eee;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .category-card.active .dropdown-content {
+            display: flex;
+        }
+
+        .brand-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .brand-sub-badge {
+            font-size: 11px;
+            background: #e2f0d9;
+            color: #385723;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .dropdown-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .dropdown-actions .btn {
+            padding: 10px;
+            font-size: 13px;
+        }
+
+        /* Footer Address & SEO Text */
+        .footer-section {
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: 15px;
+            padding-bottom: 20px;
+            border-top: 1px solid #eaeaea;
+            padding-top: 15px;
+            line-height: 1.5;
+        }
+
+        .footer-section strong {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- TOP PRO ANIMATED LED SIGN BOARD -->
+        <div class="led-sign-board">
+            <div class="sign-title">SN Cold Store</div>
+            <div class="sign-hours-line1">Open 7 Days a Week</div>
+            <div class="sign-hours-line2">9 AM - 8 PM</div>
+        </div>
+
+        <!-- Bulk & Event Order Notice -->
+        <div class="event-banner">
+            🎉 <strong>Planning an Event?</strong> We supply chilled wholesale beverages in bulk. <br>
+            <a href="tel:9800000000">📞 Tap here to call us in advance</a> for pickup at Bokse Chowk!
+        </div>
+
+        <div class="sub-text">Tap any category below to check available stock and box rates.</div>
+
+        <!-- Action Buttons -->
+        <a href="tel:9800000000" class="btn btn-primary">
+            📞 Call for Case Rates & Orders
+        </a>
+
+        <!-- Exact Verified Google Maps Pin for SN Cold Store -->
+        <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary">
+            📍 Get Directions on Google Maps
+        </a>
+
+        <!-- Categories Header -->
+        <div class="categories-header">
+            <span>Browse Full Master Inventory</span>
+            <span style="font-size: 11px;">Licensed Stock</span>
+        </div>
+
+        <!-- 1. Chilled Beers -->
+        <div class="category-card" id="card-beer" onclick="toggleCard('card-beer')">
+            <div class="category-main-row">
+                <div class="category-left">
+                    <div class="category-icon">🍺</div>
+                    <div class="category-info">
+                        <h3>Chilled Beers</h3>
+                        <p>Gorkha, Carlsberg, Tuborg & More</p>
+                    </div>
+                </div>
+                <span class="stock-badge">Ice Cold</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="brand-item"><span>Gorkha Premium Strong (500ml, 330ml, 650ml)</span><span class="brand-sub-badge">Ice Cold</span></div>
+                <div class="brand-item"><span>Carlsberg Danish Pilsner (650ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Tuborg Premium Gold (330ml, 500ml, 650ml)</span><span class="brand-sub-badge">Chilled</span></div>
+                <div class="brand-item"><span>Gorkha Pilsner (330ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Bison Super Strong Beer (650ml, 330ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Thamel Dry Hopped Lager (330ml, 650ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Gorkha Unfiltered (330ml)</span><span class="brand-sub-badge">Chilled</span></div>
+                <div class="dropdown-actions">
+                    <a href="tel:9800000000" class="btn btn-primary" onclick="event.stopPropagation()">📞 Call for Case Rates</a>
+                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()">📍 Get Directions on Google Maps</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Whiskey & Spirits -->
+        <div class="category-card" id="card-whiskey" onclick="toggleCard('card-whiskey')">
+            <div class="category-main-row">
+                <div class="category-left">
+                    <div class="category-icon">🥃</div>
+                    <div class="category-info">
+                        <h3>Whiskey & Spirits</h3>
+                        <p>Old Durbar, Signature & Golden Oak</p>
+                    </div>
+                </div>
+                <span class="stock-badge">In Stock</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="brand-item"><span>Old Durbar (750ml, 180ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Gurkhas and Guns (180ml, 350ml, 750ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Signature Premium Grain Whiskey (180ml, 350ml, 750ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Golden Oak Premium Blended Malt (180ml, 350ml, 750ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Shlok (180ml, 750ml)</span><span class="brand-sub-badge">Available</span></div>
+                <div class="brand-item"><span>Challenger (180ml)</span><span class="brand-sub-badge">Available</span></div>
+                <div class="brand-item"><span>My Dear (180ml)</span><span class="brand-sub-badge">Available</span></div>
+                <div class="dropdown-actions">
+                    <a href="tel:9800000000" class="btn btn-primary" onclick="event.stopPropagation()">📞 Call for Case Rates</a>
+                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()">📍 Get Directions on Google Maps</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Vodka, Rum & Wine -->
+        <div class="category-card" id="card-vodka" onclick="toggleCard('card-vodka')">
+            <div class="category-main-row">
+                <div class="category-left">
+                    <div class="category-icon">🍸</div>
+                    <div class="category-info">
+                        <h3>Vodka, Rum & Wine</h3>
+                        <p>Khukuri, 8848, Silver Oak & Wines</p>
+                    </div>
+                </div>
+                <span class="stock-badge">Ready</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="brand-item"><span>Khukuri 3X Rum (750ml, 180ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>8848 Vodka (180ml, 375ml, 750ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Yeti Vodka (750ml, 180ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Highlander Vodka (180ml, 375ml, 750ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Silver Oak Vodka (180ml, 750ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>8 Peaks Vodka (180ml)</span><span class="brand-sub-badge">Available</span></div>
+                <div class="brand-item"><span>Manang Valley Premium Sweet Wine (750ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Big Master Perfect Fruit Red Wine (750ml, 375ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="dropdown-actions">
+                    <a href="tel:9800000000" class="btn btn-primary" onclick="event.stopPropagation()">📞 Call for Case Rates</a>
+                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()">📍 Get Directions on Google Maps</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Soft Drinks & Energy Drinks -->
+        <div class="category-card" id="card-softdrinks" onclick="toggleCard('card-softdrinks')">
+            <div class="category-main-row">
+                <div class="category-left">
+                    <div class="category-icon">🥤</div>
+                    <div class="category-info">
+                        <h3>Soft & Energy Drinks</h3>
+                        <p>Coke, Sprite, Red Bull, Sting & More</p>
+                    </div>
+                </div>
+                <span class="stock-badge">Chilled</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="brand-item"><span>Coca Cola (2.25L, 1.5L, 1L, 500ml, 250ml)</span><span class="brand-sub-badge">Chilled</span></div>
+                <div class="brand-item"><span>Sprite (2.25L, 1.5L, 1L, 500ml, 250ml)</span><span class="brand-sub-badge">Chilled</span></div>
+                <div class="brand-item"><span>Fanta (2.25L, 1.5L, 1L, 500ml, 250ml)</span><span class="brand-sub-badge">Chilled</span></div>
+                <div class="brand-item"><span>Mountain Dew (2.25L, 1.5L, 1L, 500ml, 250ml)</span><span class="brand-sub-badge">Chilled</span></div>
+                <div class="brand-item"><span>Macho Dew (2.25L, 1.5L, 600ml, 250ml)</span><span class="brand-sub-badge">Chilled</span></div>
+                <div class="brand-item"><span>Red Bull (250ml, 330ml)</span><span class="brand-sub-badge">Ice Cold</span></div>
+                <div class="brand-item"><span>Sting (330ml)</span><span class="brand-sub-badge">Ice Cold</span></div>
+                <div class="brand-item"><span>Xtreme Energy (330ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Max Tiger Energy (330ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="dropdown-actions">
+                    <a href="tel:9800000000" class="btn btn-primary" onclick="event.stopPropagation()">📞 Call for Case Rates</a>
+                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()">📍 Get Directions on Google Maps</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Juices, Water & Other Beverages -->
+        <div class="category-card" id="card-beverages" onclick="toggleCard('card-beverages')">
+            <div class="category-main-row">
+                <div class="category-left">
+                    <div class="category-icon">🧃</div>
+                    <div class="category-info">
+                        <h3>Juices, Water & Refreshers</h3>
+                        <p>Badam drink, Frooti, Nimbu Pani & Water</p>
+                    </div>
+                </div>
+                <span class="stock-badge">Fresh</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="brand-item"><span>ATM Badam Drink (180ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Jusica Badam Drink (180ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Goodlife Mango Frooti (100ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Lemonza Nimbu Pani (250ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Jusica Litchi Drink (150ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Perna Litchi Drink (100ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Wevera Purified Bottled Water (1L)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="dropdown-actions">
+                    <a href="tel:9800000000" class="btn btn-primary" onclick="event.stopPropagation()">📞 Call for Case Rates</a>
+                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()">📍 Get Directions on Google Maps</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Snacks, Namkeen, Gutkha & Playing Cards -->
+        <div class="category-card" id="card-snacks" onclick="toggleCard('card-snacks')">
+            <div class="category-main-row">
+                <div class="category-left">
+                    <div class="category-icon">🃏</div>
+                    <div class="category-info">
+                        <h3>Snacks, Namkeen & Cards</h3>
+                        <p>Peanuts, Dalmoth, Gutkha & Playing Cards</p>
+                    </div>
+                </div>
+                <span class="stock-badge">Fresh</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="brand-item"><span>Playing Cards (Standard Deck)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Siddhivinayak Salted Peanuts</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Siddhivinayak Mix Dalmoth (Small/Medium)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Siddhivinayak Punjabi Tadka Namkeen (Small/Medium)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Siddhivinayak Moong Dalmoth (Small/Medium)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Siddhivinayak Plain Bhujiya (Small/Medium)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Amrit Plus Gutkha</span><span class="brand-sub-badge">Available</span></div>
+                <div class="brand-item"><span>Vola Gutkha</span><span class="brand-sub-badge">Available</span></div>
+                <div class="dropdown-actions">
+                    <a href="tel:9800000000" class="btn btn-primary" onclick="event.stopPropagation()">📞 Call for Case Rates</a>
+                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()">📍 Get Directions on Google Maps</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. Cigarettes -->
+        <div class="category-card" id="card-cigs" onclick="toggleCard('card-cigs')">
+            <div class="category-main-row">
+                <div class="category-left">
+                    <div class="category-icon">🚬</div>
+                    <div class="category-info">
+                        <h3>Cigarettes</h3>
+                        <p>Surya, Shikhar, Pilot & More</p>
+                    </div>
+                </div>
+                <span class="stock-badge">Counter</span>
+            </div>
+            <div class="dropdown-content">
+                <div class="brand-item"><span>Surya Luxury Kings</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Shikhar Ice</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Pilot Filter</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Khukuri Filter</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Shaan Filter</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Bijuli Filter</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="dropdown-actions">
+                    <a href="tel:9800000000" class="btn btn-primary" onclick="event.stopPropagation()">📞 Call for Case Rates</a>
+                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()">📍 Get Directions on Google Maps</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer SEO & Location Section -->
+        <div class="footer-section">
+            📍 <strong>SN Cold Store (Raksi Pasal)</strong> | Bokse Chowk, Gaighat, Udayapur<br>
+            Your trusted local cold store and wholesale hub along the <strong>Sagarmatha Highway (Gaighat-Diktel Highway)</strong>. Open 7 days a week (9 AM – 8 PM) for ice-cold beverages, spirits, quarters, and daily essentials.
+        </div>
+    </div>
+
+    <script>
+        function toggleCard(cardId) {
+            const card = document.getElementById(cardId);
+            card.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
