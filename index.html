@@ -4,37 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SN Cold Store | Bokse Chowk, Gaighat</title>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LiquorStore",
-  "name": "S&N Cold Store",
-  "alternateName": ["SN Cold Store", "S and N Cold Store"],
-  "telephone": "+9779849175714",
-  "url": "https://www.sncoldstore.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Bokse Chowk",
-    "addressLocality": "Gaighat",
-    "addressRegion": "Udayapur",
-    "postalCode": "56310",
-    "addressCountry": "NP"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 26.7919,
-    "longitude": 86.6990
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-    ],
-    "opens": "09:00",
-    "closes": "20:00"
-  }
-}
-</script>
     <style>
         * {
             box-sizing: border-box;
@@ -49,7 +18,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
         }
 
         .container {
@@ -59,6 +28,47 @@
             flex-direction: column;
             align-items: center;
             gap: 14px;
+        }
+
+        /* --- TOP BAR (HOOK LOGO & LANGUAGE DROPDOWN) --- */
+        .top-bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2px;
+        }
+
+        .brand-hook {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .brand-main-hook {
+            font-weight: 900;
+            font-size: 1.05rem;
+            color: #f77f00;
+            text-transform: uppercase;
+            letter-spacing: -0.3px;
+        }
+
+        .lang-dropdown-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lang-select {
+            background: #111;
+            color: #fff;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         /* --- PROFESSIONAL ANIMATED LED SIGN BOARD STYLING --- */
@@ -117,6 +127,50 @@
             color: #00f5d4;
             letter-spacing: 1px;
             text-shadow: 0 0 10px rgba(0, 245, 212, 0.8);
+        }
+
+        /* --- LIVE PROXIMITY CARD STYLING --- */
+        .proximity-card {
+            width: 100%;
+            background: #121212;
+            border: 1px solid #262626;
+            border-radius: 12px;
+            padding: 16px;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .proximity-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .proximity-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #f59e0b;
+        }
+
+        .proximity-badge {
+            font-size: 0.75rem;
+            background: rgba(0, 245, 212, 0.15);
+            color: #00f5d4;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .proximity-desc {
+            font-size: 0.85rem;
+            color: #ccc;
+            margin: 0;
+            line-height: 1.4;
         }
 
         /* Bulk & Event Notice Banner */
@@ -184,6 +238,156 @@
 
         .btn-secondary:hover {
             background-color: #343a40;
+        }
+
+        .btn-directions {
+            background-color: #2563eb;
+            color: white;
+            font-size: 0.85rem;
+            padding: 11px;
+            margin-top: 4px;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-directions:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* --- ESTIMATOR / CALCULATOR SECTION STYLING --- */
+        .calculator-box {
+            width: 100%;
+            background: #111;
+            color: #fff;
+            border: 1px solid #262626;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .calc-header {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .calc-badge {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .calc-title {
+            color: #fff;
+            font-size: 1.25rem;
+            margin: 10px 0 6px 0;
+            font-weight: 700;
+        }
+
+        .calc-desc {
+            color: #aaa;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .calc-form-group {
+            margin-bottom: 14px;
+        }
+
+        .calc-label {
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+            color: #ccc;
+            font-weight: 600;
+        }
+
+        .calc-input, .calc-select {
+            width: 100%;
+            padding: 10px 12px;
+            background: #1a1a1a;
+            color: #fff;
+            border: 1px solid #333;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .calc-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-whatsapp {
+            flex: 1;
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background: #20ba5a;
+        }
+
+        .btn-sms {
+            flex: 1;
+            background: #007AFF;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+        }
+
+        .btn-sms:hover {
+            background: #0062cc;
+        }
+
+        .calc-output-box {
+            display: none;
+            margin-top: 20px;
+            background: #222;
+            border-left: 4px solid #ffaa00;
+            padding: 14px;
+            border-radius: 6px;
+        }
+
+        .calc-output-title {
+            margin: 0 0 8px 0;
+            color: #ffaa00;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .calc-output-text {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #ccc;
         }
 
         /* Categories Section */
@@ -310,7 +514,7 @@
             font-size: 13px;
         }
 
-        /* Footer Address & SEO Text */
+        /* Footer SEO & Location Section */
         .footer-section {
             width: 100%;
             text-align: center;
@@ -331,35 +535,104 @@
 <body>
 
     <div class="container">
+        <!-- TOP BAR: CLEAN BRAND HOOK & LANGUAGE SELECTOR -->
+        <div class="top-bar">
+            <div class="brand-hook">
+                <span class="brand-main-hook" data-en="⚡ SN Cold Store" data-ne="⚡ एस एन्ड एन कोल्ड स्टोर">⚡ SN Cold Store</span>
+            </div>
+            <div class="lang-dropdown-wrapper">
+                <select id="langSelector" class="lang-select" onchange="switchLanguage(this.value)">
+                    <option value="en">English</option>
+                    <option value="ne">नेपाली</option>
+                </select>
+            </div>
+        </div>
+
         <!-- TOP PRO ANIMATED LED SIGN BOARD -->
         <div class="led-sign-board">
-            <div class="sign-title">SN Cold Store</div>
-            <div class="sign-hours-line1">Open 7 Days a Week</div>
+            <div class="sign-title" data-en="SN Cold Store" data-ne="एस एन्ड एन कोल्ड स्टोर">SN Cold Store</div>
+            <div class="sign-hours-line1" data-en="Open 7 Days a Week" data-ne="हप्ताको ७ दिन खुल्ला">Open 7 Days a Week</div>
             <div class="sign-hours-line2">9 AM - 8 PM</div>
         </div>
 
-        <!-- Bulk & Event Order Notice -->
-        <div class="event-banner">
-            🎉 <strong>Planning an Event?</strong> We supply chilled wholesale beverages in bulk. <br>
-            <a href="tel:9849175714">📞 Tap here to call us in advance</a> for pickup at Bokse Chowk!
+        <!-- LIVE PROXIMITY & MOTORBIKE TRAVEL TIME CARD -->
+        <div id="proximityCard" class="proximity-card">
+            <div class="proximity-top">
+                <span class="proximity-title" data-en="📍 Live Corridor Distance" data-ne="📍 तपाईंको दूरी र समय">📍 Live Corridor Distance</span>
+                <span id="proximityBadge" class="proximity-badge" data-en="Locating position..." data-ne="स्थान पत्ता लगाउँदै...">Locating position...</span>
+            </div>
+            <p id="proximityText" class="proximity-desc" data-en="Calculating motorbike travel time from your location to Bokse Chowk..." data-ne="तपाईंको स्थानबाट बोक्से चोकसम्मको मोटरबाइक यात्रा समय गणना हुँदैछ...">
+                Calculating motorbike travel time from your location to Bokse Chowk...
+            </p>
+            <a id="liveDirectionsBtn" href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-directions" data-en="🗺️ Get Live Motorbike Directions" data-ne="🗺️ लाइभ डाइरेक्शन (बाटो) हेर्नुहोस्">
+                🗺️ Get Live Motorbike Directions
+            </a>
         </div>
 
-        <div class="sub-text">Tap any category below to check available stock and box rates.</div>
+        <!-- Bulk & Event Notice Banner -->
+        <div class="event-banner">
+            🎉 <strong data-en="Planning a party?" data-ne="पार्टी वा कार्यक्रम छ?">Planning a party?</strong> <span data-en="We have cold drinks & water ready in bulk." data-ne="चिसो पेयपदार्थ र पानी थोकमा पाइन्छ।">We have cold drinks & water ready in bulk.</span><br>
+            <a href="tel:9779849175714" data-en="📞 Call us to order in advance at Bokse Chowk" data-ne="📞 बोक्से चोकमा अर्डर गर्न फोन गर्नुहोस्">📞 Call us to order in advance at Bokse Chowk</a>
+        </div>
+
+        <div class="sub-text" data-en="Tap any item below to check prices and stock." data-ne="मूल्य र सामान हेर्न तलको कुनै पनि ट्याप गर्नुहोस्।">Tap any item below to check prices and stock.</div>
 
         <!-- Action Buttons -->
-        <a href="tel:9849175714" class="btn btn-primary">
-            📞 Call for Case Rates & Orders
+        <a href="tel:9779849175714" class="btn btn-primary" data-en="📞 Call for Box Rates & Orders" data-ne="📞 फोन गरी रेट बुझ्नुहोस्">
+            📞 Call for Box Rates & Orders
         </a>
 
-        <!-- Exact Verified Google Maps Pin for SN Cold Store -->
-        <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary">
-            📍 Get Directions on Google Maps
-        </a>
+        <!-- --- INTEGRATED PARTY CALCULATOR SECTION --- -->
+        <div class="calculator-box">
+            <div class="calc-header">
+                <span class="calc-badge" data-en="⚡ Quick Party Calculator" data-ne="⚡ पार्टी क्याल्कुलेटर">⚡ Quick Party Calculator</span>
+                <h3 class="calc-title" data-en="SN COLD STORE PARTY CALCULATOR" data-ne="एस एन्ड एन पार्टी क्याल्कुलेटर">SN COLD STORE PARTY CALCULATOR</h3>
+                <p class="calc-desc" data-en="Enter your details to calculate event volume and notify staff." data-ne="विवरण भरेर कार्यक्रमको लागि आवश्यक परिमाण पत्ता लगाउनुहोस् र स्टाफलाई जानकारी दिनुहोस्।">
+                    Enter your details to calculate event volume and notify staff.
+                </p>
+            </div>
+
+            <!-- Input 1: Name / Location -->
+            <div class="calc-form-group">
+                <label class="calc-label" data-en="Your Name / Location (e.g., Hari from Bokse):" data-en-placeholder="Hari (Bokse Corridor)" data-ne="तपाईंको नाम / स्थान (जस्तै: हरि, बोक्से):">Your Name / Location (e.g., Hari from Bokse):</label>
+                <input type="text" id="customerName" class="calc-input" placeholder="Hari (Bokse Corridor)" required />
+            </div>
+
+            <!-- Input 2: Headcount -->
+            <div class="calc-form-group">
+                <label class="calc-label" data-en="Headcount (People coming):" data-ne="पाहुनाहरूको संख्या (कति जना आउँदै छन्?):">Headcount (People coming):</label>
+                <input type="number" id="headcount" class="calc-input" placeholder="e.g., 25" min="1" max="1000" required />
+            </div>
+
+            <!-- Input 3: Mobile Number -->
+            <div class="calc-form-group" style="margin-bottom: 15px;">
+                <label class="calc-label" data-en="Your Mobile Number (Required to unlock estimate):" data-ne="तपाईंको मोबाइल नम्बर (अवस्था हेर्न आवश्यक):">Your Mobile Number (Required to unlock estimate):</label>
+                <input type="tel" id="customerPhone" class="calc-input" placeholder="e.g., 98XXXXXXXX" required />
+            </div>
+
+            <p style="margin: 10px 0 5px 0; font-size: 0.85rem; color: #ccc;" data-en="Choose dispatch channel to unlock your quote:" data-ne="अर्डर पठाउन माध्यम छान्नुहोस्:">Choose dispatch channel to unlock your quote:</p>
+
+            <!-- Action Dispatch Buttons -->
+            <div class="calc-actions">
+                <button onclick="processOrder('whatsapp')" class="btn-whatsapp">
+                    <span>📱</span> <span data-en="Send via WhatsApp" data-ne="हवाट्सएप (WhatsApp)">Send via WhatsApp</span>
+                </button>
+                <button onclick="processOrder('sms')" class="btn-sms">
+                    <span>💬</span> <span data-en="Send via SMS Text" data-ne="एसएमएस (SMS Text)">Send via SMS Text</span>
+                </button>
+            </div>
+
+            <!-- LOCKED RESULTS PANEL (Hidden by default) -->
+            <div id="resultsPanel" class="calc-output-box">
+                <h4 class="calc-output-title" data-en="Estimated Package Requirements:" data-ne="अनुमानित आवश्यक सामानहरू:">Estimated Package Requirements:</h4>
+                <p id="outputDetails" class="calc-output-text"></p>
+            </div>
+        </div>
 
         <!-- Categories Header -->
         <div class="categories-header">
-            <span>Browse Full Master Inventory</span>
-            <span style="font-size: 11px;">Licensed Stock</span>
+            <span data-en="Full Inventory" data-ne="सबै सामान सूची">Full Inventory</span>
+            <span style="font-size: 11px;" data-en="In Stock" data-ne="स्टकमा छ">In Stock</span>
         </div>
 
         <!-- 1. Chilled Beers -->
@@ -368,23 +641,23 @@
                 <div class="category-left">
                     <div class="category-icon">🍺</div>
                     <div class="category-info">
-                        <h3>Chilled Beers</h3>
-                        <p>Gorkha, Carlsberg, Tuborg & More</p>
+                        <h3 data-en="Cold Beer" data-ne="चिसो बियर">Cold Beer</h3>
+                        <p data-en="Gorkha, Carlsberg, Tuborg & more" data-ne="गोर्खा, कार्लबर्ग, टुबोर्ग आदि">Gorkha, Carlsberg, Tuborg & more</p>
                     </div>
                 </div>
-                <span class="stock-badge">Ice Cold</span>
+                <span class="stock-badge" data-en="Ice Cold" data-ne="दमदार चिसो">Ice Cold</span>
             </div>
             <div class="dropdown-content">
-                <div class="brand-item"><span>Gorkha Premium Strong (500ml, 330ml, 650ml)</span><span class="brand-sub-badge">Ice Cold</span></div>
-                <div class="brand-item"><span>Carlsberg Danish Pilsner (650ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Tuborg Premium Gold (330ml, 500ml, 650ml)</span><span class="brand-sub-badge">Chilled</span></div>
-                <div class="brand-item"><span>Gorkha Pilsner (330ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Bison Super Strong Beer (650ml, 330ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Thamel Dry Hopped Lager (330ml, 650ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Gorkha Unfiltered (330ml)</span><span class="brand-sub-badge">Chilled</span></div>
+                <div class="brand-item"><span>Gorkha Premium Strong (500ml, 330ml, 650ml)</span><span class="brand-sub-badge" data-en="Ice Cold" data-ne="चिसो">Ice Cold</span></div>
+                <div class="brand-item"><span>Tuborg Premium Gold (330ml, 500ml, 650ml)</span><span class="brand-sub-badge" data-en="Cold" data-ne="चिसो">Cold</span></div>
+                <div class="brand-item"><span>Carlsberg Danish Pilsner (650ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Gorkha Pilsner (330ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Bison Super Strong Beer (650ml, 330ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Thamel Dry Hopped Lager (330ml, 650ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Gorkha Unfiltered (330ml)</span><span class="brand-sub-badge" data-en="Cold" data-ne="चिसो">Cold</span></div>
                 <div class="dropdown-actions">
-                    <a href="tel:9849175714" class="btn btn-primary" onclick="event.stopPropagation()">📞 Call for Case Rates</a>
-                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()">📍 Get Directions on Google Maps</a>
+                    <a href="tel:9779849175714" class="btn btn-primary" onclick="event.stopPropagation()" data-en="📞 Call for Box Rates" data-ne="📞 बक्स रेटको लागि फोन गर्नुहोस्">📞 Call for Box Rates</a>
+                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()" data-en="📍 Open Map Location" data-ne="📍 गूगल नक्सा (Map) हेर्नुहोस्">📍 Open Map Location</a>
                 </div>
             </div>
         </div>
@@ -395,23 +668,23 @@
                 <div class="category-left">
                     <div class="category-icon">🥃</div>
                     <div class="category-info">
-                        <h3>Whiskey & Spirits</h3>
-                        <p>Old Durbar, Signature & Golden Oak</p>
+                        <h3 data-en="Whiskey & Spirits" data-ne="ह्विस्की र स्पिरिट्स">Whiskey & Spirits</h3>
+                        <p data-en="Old Durbar, Signature, Golden Oak" data-ne="ओल्ड दरबार, सिग्नेचर, गोल्डेन ओक">Old Durbar, Signature, Golden Oak</p>
                     </div>
                 </div>
-                <span class="stock-badge">In Stock</span>
+                <span class="stock-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span>
             </div>
             <div class="dropdown-content">
-                <div class="brand-item"><span>Old Durbar (750ml, 180ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Gurkhas and Guns (180ml, 350ml, 750ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Signature Premium Grain Whiskey (180ml, 350ml, 750ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Golden Oak Premium Blended Malt (180ml, 350ml, 750ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Shlok (180ml, 750ml)</span><span class="brand-sub-badge">Available</span></div>
-                <div class="brand-item"><span>Challenger (180ml)</span><span class="brand-sub-badge">Available</span></div>
-                <div class="brand-item"><span>My Dear (180ml)</span><span class="brand-sub-badge">Available</span></div>
+                <div class="brand-item"><span>Old Durbar (750ml, 180ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Gurkhas and Guns (180ml, 350ml, 750ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Signature Premium Grain Whiskey (180ml, 350ml, 750ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Golden Oak Premium Blended Malt (180ml, 350ml, 750ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Shlok (180ml, 750ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Challenger (180ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>My Dear (180ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
                 <div class="dropdown-actions">
-                    <a href="tel:9849175714" class="btn btn-primary" onclick="event.stopPropagation()">📞 Call for Case Rates</a>
-                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()">📍 Get Directions on Google Maps</a>
+                    <a href="tel:9779849175714" class="btn btn-primary" onclick="event.stopPropagation()" data-en="📞 Call for Box Rates" data-ne="📞 बक्स रेटको लागि फोन गर्नुहोस्">📞 Call for Box Rates</a>
+                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()" data-en="📍 Open Map Location" data-ne="📍 गूगल नक्सा (Map) हेर्नुहोस्">📍 Open Map Location</a>
                 </div>
             </div>
         </div>
@@ -422,24 +695,24 @@
                 <div class="category-left">
                     <div class="category-icon">🍸</div>
                     <div class="category-info">
-                        <h3>Vodka, Rum & Wine</h3>
-                        <p>Khukuri, 8848, Silver Oak & Wines</p>
+                        <h3 data-en="Vodka, Rum & Wine" data-ne="भोडका, रम र वाइन">Vodka, Rum & Wine</h3>
+                        <p data-en="Khukuri Rum, 8848, Silver Oak" data-ne="खुकुरी रम, ८८४८, सिल्भर ओक">Khukuri Rum, 8848, Silver Oak</p>
                     </div>
                 </div>
-                <span class="stock-badge">Ready</span>
+                <span class="stock-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span>
             </div>
             <div class="dropdown-content">
-                <div class="brand-item"><span>Khukuri 3X Rum (750ml, 180ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>8848 Vodka (180ml, 375ml, 750ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Yeti Vodka (750ml, 180ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Highlander Vodka (180ml, 375ml, 750ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Silver Oak Vodka (180ml, 750ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>8 Peaks Vodka (180ml)</span><span class="brand-sub-badge">Available</span></div>
-                <div class="brand-item"><span>Manang Valley Premium Sweet Wine (750ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Big Master Perfect Fruit Red Wine (750ml, 375ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Khukuri 3X Rum (750ml, 180ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>8848 Vodka (180ml, 375ml, 750ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Yeti Vodka (750ml, 180ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Highlander Vodka (180ml, 375ml, 750ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Silver Oak Vodka (180ml, 750ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>8 Peaks Vodka (180ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Manang Valley Premium Sweet Wine (750ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Big Master Perfect Fruit Red Wine (750ml, 375ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
                 <div class="dropdown-actions">
-                    <a href="tel:9849175714" class="btn btn-primary" onclick="event.stopPropagation()">📞 Call for Case Rates</a>
-                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()">📍 Get Directions on Google Maps</a>
+                    <a href="tel:9779849175714" class="btn btn-primary" onclick="event.stopPropagation()" data-en="📞 Call for Box Rates" data-ne="📞 बक्स रेटको लागि फोन गर्नुहोस्">📞 Call for Box Rates</a>
+                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()" data-en="📍 Open Map Location" data-ne="📍 गूगल नक्सा (Map) हेर्नुहोस्">📍 Open Map Location</a>
                 </div>
             </div>
         </div>
@@ -450,25 +723,25 @@
                 <div class="category-left">
                     <div class="category-icon">🥤</div>
                     <div class="category-info">
-                        <h3>Soft & Energy Drinks</h3>
-                        <p>Coke, Sprite, Red Bull, Sting & More</p>
+                        <h3 data-en="Cold Drinks & Energy" data-ne="चिसो पेय र ऊर्जा पेय">Cold Drinks & Energy</h3>
+                        <p data-en="Coke, Sprite, Red Bull, Sting" data-ne="कोकाकोला, स्प्राइट, रेड बुल, स्टिंग">Coke, Sprite, Red Bull, Sting</p>
                     </div>
                 </div>
-                <span class="stock-badge">Chilled</span>
+                <span class="stock-badge" data-en="Cold" data-ne="चिसो">Cold</span>
             </div>
             <div class="dropdown-content">
-                <div class="brand-item"><span>Coca Cola (2.25L, 1.5L, 1L, 500ml, 250ml)</span><span class="brand-sub-badge">Chilled</span></div>
-                <div class="brand-item"><span>Sprite (2.25L, 1.5L, 1L, 500ml, 250ml)</span><span class="brand-sub-badge">Chilled</span></div>
-                <div class="brand-item"><span>Fanta (2.25L, 1.5L, 1L, 500ml, 250ml)</span><span class="brand-sub-badge">Chilled</span></div>
-                <div class="brand-item"><span>Mountain Dew (2.25L, 1.5L, 1L, 500ml, 250ml)</span><span class="brand-sub-badge">Chilled</span></div>
-                <div class="brand-item"><span>Macho Dew (2.25L, 1.5L, 600ml, 250ml)</span><span class="brand-sub-badge">Chilled</span></div>
-                <div class="brand-item"><span>Red Bull (250ml, 330ml)</span><span class="brand-sub-badge">Ice Cold</span></div>
-                <div class="brand-item"><span>Sting (330ml)</span><span class="brand-sub-badge">Ice Cold</span></div>
-                <div class="brand-item"><span>Xtreme Energy (330ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Max Tiger Energy (330ml)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Coca Cola (2.25L, 1.5L, 1L, 500ml, 250ml)</span><span class="brand-sub-badge" data-en="Cold" data-ne="चिसो">Cold</span></div>
+                <div class="brand-item"><span>Sprite (2.25L, 1.5L, 1L, 500ml, 250ml)</span><span class="brand-sub-badge" data-en="Cold" data-ne="चिसो">Cold</span></div>
+                <div class="brand-item"><span>Fanta (2.25L, 1.5L, 1L, 500ml, 250ml)</span><span class="brand-sub-badge" data-en="Cold" data-ne="चिसो">Cold</span></div>
+                <div class="brand-item"><span>Mountain Dew (2.25L, 1.5L, 1L, 500ml, 250ml)</span><span class="brand-sub-badge" data-en="Cold" data-ne="चिसो">Cold</span></div>
+                <div class="brand-item"><span>Macho Dew (2.25L, 1.5L, 600ml, 250ml)</span><span class="brand-sub-badge" data-en="Cold" data-ne="चिसो">Cold</span></div>
+                <div class="brand-item"><span>Red Bull (250ml, 330ml)</span><span class="brand-sub-badge" data-en="Ice Cold" data-ne="दमदार चिसो">Ice Cold</span></div>
+                <div class="brand-item"><span>Sting Energy (330ml)</span><span class="brand-sub-badge" data-en="Ice Cold" data-ne="दमदार चिसो">Ice Cold</span></div>
+                <div class="brand-item"><span>Xtreme Energy (330ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Max Tiger Energy (330ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
                 <div class="dropdown-actions">
-                    <a href="tel:9849175714" class="btn btn-primary" onclick="event.stopPropagation()">📞 Call for Case Rates</a>
-                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()">📍 Get Directions on Google Maps</a>
+                    <a href="tel:9779849175714" class="btn btn-primary" onclick="event.stopPropagation()" data-en="📞 Call for Box Rates" data-ne="📞 बक्स रेटको लागि फोन गर्नुहोस्">📞 Call for Box Rates</a>
+                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()" data-en="📍 Open Map Location" data-ne="📍 गूगल नक्सा (Map) हेर्नुहोस्">📍 Open Map Location</a>
                 </div>
             </div>
         </div>
@@ -479,23 +752,23 @@
                 <div class="category-left">
                     <div class="category-icon">🧃</div>
                     <div class="category-info">
-                        <h3>Juices, Water & Refreshers</h3>
-                        <p>Badam drink, Frooti, Nimbu Pani & Water</p>
+                        <h3 data-en="Water & Juices" data-ne="पानी र जुस">Water & Juices</h3>
+                        <p data-en="Badam milk, Frooti, Water bottles" data-ne="बाम दुध, फ्रुटी, पानी बोतल">Badam milk, Frooti, Water bottles</p>
                     </div>
                 </div>
-                <span class="stock-badge">Fresh</span>
+                <span class="stock-badge" data-en="Fresh" data-ne="ताजा">Fresh</span>
             </div>
             <div class="dropdown-content">
-                <div class="brand-item"><span>ATM Badam Drink (180ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Jusica Badam Drink (180ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Goodlife Mango Frooti (100ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Lemonza Nimbu Pani (250ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Jusica Litchi Drink (150ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Perna Litchi Drink (100ml)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Wevera Purified Bottled Water (1L)</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>ATM Badam Drink (180ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Jusica Badam Drink (180ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Goodlife Mango Frooti (100ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Lemonza Nimbu Pani (250ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Jusica Litchi Drink (150ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Perna Litchi Drink (100ml)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Wevera Purified Bottled Water (1L)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
                 <div class="dropdown-actions">
-                    <a href="tel:9849175714" class="btn btn-primary" onclick="event.stopPropagation()">📞 Call for Case Rates</a>
-                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()">📍 Get Directions on Google Maps</a>
+                    <a href="tel:9779849175714" class="btn btn-primary" onclick="event.stopPropagation()" data-en="📞 Call for Box Rates" data-ne="📞 बक्स रेटको लागि फोन गर्नुहोस्">📞 Call for Box Rates</a>
+                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()" data-en="📍 Open Map Location" data-ne="📍 गूगल नक्सा (Map) हेर्नुहोस्">📍 Open Map Location</a>
                 </div>
             </div>
         </div>
@@ -506,24 +779,24 @@
                 <div class="category-left">
                     <div class="category-icon">🃏</div>
                     <div class="category-info">
-                        <h3>Snacks, Namkeen & Cards</h3>
-                        <p>Peanuts, Dalmoth, Gutkha & Playing Cards</p>
+                        <h3 data-en="Snacks & Cards" data-ne="खाजा र तास">Snacks & Cards</h3>
+                        <p data-en="Peanuts, Dalmoth, Playing Cards" data-ne="मटर, दालमोट, तास">Peanuts, Dalmoth, Playing Cards</p>
                     </div>
                 </div>
-                <span class="stock-badge">Fresh</span>
+                <span class="stock-badge" data-en="Fresh" data-ne="ताजा">Fresh</span>
             </div>
             <div class="dropdown-content">
-                <div class="brand-item"><span>Playing Cards (Standard Deck)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Siddhivinayak Salted Peanuts</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Siddhivinayak Mix Dalmoth (Small/Medium)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Siddhivinayak Punjabi Tadka Namkeen (Small/Medium)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Siddhivinayak Moong Dalmoth (Small/Medium)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Siddhivinayak Plain Bhujiya (Small/Medium)</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Amrit Plus Gutkha</span><span class="brand-sub-badge">Available</span></div>
-                <div class="brand-item"><span>Vola Gutkha</span><span class="brand-sub-badge">Available</span></div>
+                <div class="brand-item"><span>Playing Cards (Standard Deck)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Siddhivinayak Salted Peanuts</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Siddhivinayak Mix Dalmoth (Small/Medium)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Siddhivinayak Punjabi Tadka Namkeen (Small/Medium)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Siddhivinayak Moong Dalmoth (Small/Medium)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Siddhivinayak Plain Bhujiya (Small/Medium)</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Amrit Plus Gutkha</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Vola Gutkha</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
                 <div class="dropdown-actions">
-                    <a href="tel:9849175714" class="btn btn-primary" onclick="event.stopPropagation()">📞 Call for Case Rates</a>
-                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()">📍 Get Directions on Google Maps</a>
+                    <a href="tel:9779849175714" class="btn btn-primary" onclick="event.stopPropagation()" data-en="📞 Call for Box Rates" data-ne="📞 बक्स रेटको लागि फोन गर्नुहोस्">📞 Call for Box Rates</a>
+                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()" data-en="📍 Open Map Location" data-ne="📍 गूगल नक्सा (Map) हेर्नुहोस्">📍 Open Map Location</a>
                 </div>
             </div>
         </div>
@@ -534,29 +807,29 @@
                 <div class="category-left">
                     <div class="category-icon">🚬</div>
                     <div class="category-info">
-                        <h3>Cigarettes</h3>
-                        <p>Surya, Shikhar, Pilot & More</p>
+                        <h3 data-en="Cigarettes" data-ne="चुरोट">Cigarettes</h3>
+                        <p data-en="Surya, Shikhar, Pilot & more" data-ne="सूर्य, शिखर, पाइलट आदि">Surya, Shikhar, Pilot & more</p>
                     </div>
                 </div>
-                <span class="stock-badge">Counter</span>
+                <span class="stock-badge" data-en="Counter" data-ne="काउन्टर">Counter</span>
             </div>
             <div class="dropdown-content">
-                <div class="brand-item"><span>Surya Luxury Kings</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Shikhar Ice</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Pilot Filter</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Khukuri Filter</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Shaan Filter</span><span class="brand-sub-badge">In Stock</span></div>
-                <div class="brand-item"><span>Bijuli Filter</span><span class="brand-sub-badge">In Stock</span></div>
+                <div class="brand-item"><span>Surya Luxury Kings</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Shikhar Ice</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Pilot Filter</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Khukuri Filter</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Shaan Filter</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
+                <div class="brand-item"><span>Bijuli Filter</span><span class="brand-sub-badge" data-en="Ready" data-ne="उपलब्ध">Ready</span></div>
                 <div class="dropdown-actions">
-                    <a href="tel:9849175714" class="btn btn-primary" onclick="event.stopPropagation()">📞 Call for Case Rates</a>
-                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()">📍 Get Directions on Google Maps</a>
+                    <a href="tel:9779849175714" class="btn btn-primary" onclick="event.stopPropagation()" data-en="📞 Call for Box Rates" data-ne="📞 बक्स रेटको लागि फोन गर्नुहोस्">📞 Call for Box Rates</a>
+                    <a href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-secondary" onclick="event.stopPropagation()" data-en="📍 Open Map Location" data-ne="📍 गूगल नक्सा (Map) हेर्नुहोस्">📍 Open Map Location</a>
                 </div>
             </div>
         </div>
 
         <!-- Footer SEO & Location Section -->
-        <div class="footer-section">
-            📍 <strong>SN Cold Store (Raksi Pasal)</strong> | Bokse Chowk, Gaighat, Udayapur<br>
+        <div class="footer-section" data-en="📍 SN Cold Store (Raksi Pasal) | Bokse Chowk, Gaighat, Udayapur<br>Your trusted local cold store and wholesale hub along the <strong>Sagarmatha Highway (Gaighat-Diktel Highway)</strong>. Open 7 days a week (9 AM – 8 PM) for ice-cold beverages, spirits, quarters, and daily essentials." data-ne="📍 एस एन्ड एन कोल्ड स्टोर (रक्सी पसल) | बोक्से चोक, गाईघाट, उदयपुर<br>तपाईंको विश्वासीलो स्थानीय कोल्ड स्टोर तथा थोक बिक्रेता <strong>सगरमाथा राजमार्ग (गाईघाट-दिक्तेल राजमार्ग)</strong>। चिसो पेय, स्पिरिट, क्वाटर र दैनिक सामानका लागि हप्ताको ७ दिन (बिहान ९ – बेलुका ८) खुल्ला।">
+            📍 SN Cold Store (Raksi Pasal) | Bokse Chowk, Gaighat, Udayapur<br>
             Your trusted local cold store and wholesale hub along the <strong>Sagarmatha Highway (Gaighat-Diktel Highway)</strong>. Open 7 days a week (9 AM – 8 PM) for ice-cold beverages, spirits, quarters, and daily essentials.
         </div>
     </div>
@@ -565,6 +838,171 @@
         function toggleCard(cardId) {
             const card = document.getElementById(cardId);
             card.classList.toggle('active');
+        }
+
+        let lastCalculatedKm = null;
+        let lastCalculatedMins = null;
+        const STORE_LAT = 26.9234;
+        const STORE_LNG = 86.7123;
+        const AVG_SPEED_KMH = 22; // Average local motorbike transit speed
+
+        function calculateHaversineDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Earth radius in km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = 
+                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return R * c;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const userLat = position.coords.latitude;
+                        const userLng = position.coords.longitude;
+                        lastCalculatedKm = calculateHaversineDistance(userLat, userLng, STORE_LAT, STORE_LNG);
+                        lastCalculatedMins = Math.max(1, Math.round((lastCalculatedKm / AVG_SPEED_KMH) * 60));
+
+                        updateProximityDisplay();
+
+                        // Dynamically bind turn-by-turn Google Maps routing URL
+                        const dirBtn = document.getElementById('liveDirectionsBtn');
+                        dirBtn.href = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLng}&destination=${STORE_LAT},${STORE_LNG}&travelmode=driving`;
+                    },
+                    (error) => {
+                        setProximityFallback();
+                    },
+                    { timeout: 10000, maximumAge: 60000 }
+                );
+            } else {
+                setProximityFallback();
+            }
+        });
+
+        function updateProximityDisplay() {
+            const badge = document.getElementById('proximityBadge');
+            const text = document.getElementById('proximityText');
+            const currentLang = document.getElementById('langSelector').value;
+
+            if (lastCalculatedKm !== null) {
+                if (currentLang === 'ne') {
+                    badge.textContent = `${lastCalculatedKm.toFixed(1)} किमी टाढा • ~${lastCalculatedMins} मिनेट राइड`;
+                    text.textContent = `बोक्से चोक, गाईघाटस्थित एस एन्ड एन कोल्ड स्टोर तपाईंको स्थानबाट करिब ${lastCalculatedKm.toFixed(1)} किमी टाढा छ।`;
+                } else {
+                    badge.textContent = `${lastCalculatedKm.toFixed(1)} km away • ~${lastCalculatedMins} min ride`;
+                    text.textContent = `S&N Cold Store at Bokse Chowk is approximately ${lastCalculatedKm.toFixed(1)} km from your current GPS position.`;
+                }
+                badge.setAttribute('data-en', `${lastCalculatedKm.toFixed(1)} km away • ~${lastCalculatedMins} min ride`);
+                badge.setAttribute('data-ne', `${lastCalculatedKm.toFixed(1)} किमी टाढा • ~${lastCalculatedMins} मिनेट राइड`);
+                text.setAttribute('data-en', `S&N Cold Store at Bokse Chowk is approximately ${lastCalculatedKm.toFixed(1)} km from your current GPS position.`);
+                text.setAttribute('data-ne', `बोक्से चोक, गाईघाटस्थित एस एन्ड एन कोल्ड स्टोर तपाईंको स्थानबाट करिब ${lastCalculatedKm.toFixed(1)} किमी टाढा छ।`);
+            }
+        }
+
+        function setProximityFallback() {
+            const badge = document.getElementById('proximityBadge');
+            const text = document.getElementById('proximityText');
+            badge.textContent = "Sagarmatha Highway Hub";
+            badge.setAttribute('data-en', "Sagarmatha Highway Hub");
+            badge.setAttribute('data-ne', "सगरमाथा राजमार्ग हब");
+            text.textContent = "Location permission unavailable. Serving Bokse Chowk corridor live.";
+            text.setAttribute('data-en', "Location permission unavailable. Serving Bokse Chowk corridor live.");
+            text.setAttribute('data-ne', "लोकेशन अनुमति छैन। बोक्से चोक हबबाट सेवा सुचारू छ।");
+        }
+
+        function processOrder(channel) {
+            const customerName = document.getElementById('customerName').value.trim() || "Customer";
+            const headcount = document.getElementById('headcount').value.trim();
+            const customerPhone = document.getElementById('customerPhone').value.trim();
+            const currentLang = document.getElementById('langSelector').value;
+
+            // 1. Validation: Check empty fields
+            if (!headcount || !customerPhone) {
+                alert(currentLang === 'ne' ? "कृपया पाहुनाको संख्या र मोबाइल नम्बर भर्नुहोस्।" : "Please fill in your headcount and mobile number.");
+                return;
+            }
+
+            // 2. Validation: Anti-Dummy Check (blocks 0000000000, 1111111111, short strings)
+            const isDummy = /^(\d)\1+$/.test(customerPhone);
+            const isValidLength = customerPhone.length >= 10;
+
+            if (isDummy || !isValidLength || customerPhone === "1234567890") {
+                alert(currentLang === 'ne' ? "अमान्य नम्बर। अनुमानित विवरण हेर्नको लागि सही १०-अंकको मोबाइल नम्बर राख्नुहोस्।" : "Nice try. Enter a functional 10-digit mobile number to view your estimate.");
+                document.getElementById('customerPhone').focus();
+                return;
+            }
+
+            // 3. Perform internal calculations
+            const estimatedWaterLiters = headcount * 1.5;
+            const estimatedSoftDrinkCases = Math.ceil(headcount / 10);
+            const estimatedIceBags = Math.ceil(headcount / 15);
+
+            // 4. Format the exact text payload your staff will receive
+            const staffMessage = `🚨 *NEW SN CORRIDOR LEAD* 🚨\n` +
+                                 `👤 Name: ${customerName}\n` +
+                                 `📱 Phone: ${customerPhone}\n` +
+                                 `👥 Headcount: ${headcount} People\n\n` +
+                                 `📦 *Estimated Requirements:*\n` +
+                                 `- Drinking Water: ${estimatedWaterLiters}L\n` +
+                                 `- Soft Drinks / Mixers: ~${estimatedSoftDrinkCases} Cases\n` +
+                                 `- Ice: ~${estimatedIceBags} Packets\n` +
+                                 `⚡ *Action:* Call or text back to confirm pickup window.`;
+
+            const encodedMessage = encodeURIComponent(staffMessage);
+            const storeStaffNumber = "9779849175714"; // Your business/staff number
+
+            // 5. Unlock the results on the HTML screen for the user
+            if (currentLang === 'ne') {
+                document.getElementById('outputDetails').innerHTML = 
+                    `<strong>${headcount} जना पाहुनाको लागि (${customerName}):</strong><br>` +
+                    `• ${estimatedWaterLiters} लिटर पिउने पानी<br>` +
+                    `• ~${estimatedSoftDrinkCases} क्यारेट चिसो पेय / सोडा<br>` +
+                    `• ~${estimatedIceBags} प्याकेट बरफ (Ice)<br><br>` +
+                    `<span style="color: #4cd137; font-size: 0.85rem;">✓ ${channel.toUpperCase()} मार्फत एस एन्ड एन कोल्ड स्टोरमा अर्डर सफलतापूर्वक पठाइयो!</span>`;
+            } else {
+                document.getElementById('outputDetails').innerHTML = 
+                    `<strong>For ${headcount} Guests (${customerName}):</strong><br>` +
+                    `• ${estimatedWaterLiters} Liters of Water<br>` +
+                    `• ~${estimatedSoftDrinkCases} Cases of Soft Drinks/Mixers<br>` +
+                    `• ~${estimatedIceBags} Packets of Ice<br><br>` +
+                    `<span style="color: #4cd137; font-size: 0.85rem;">✓ Order successfully dispatched via ${channel.toUpperCase()} to SN Cold Store staff!</span>`;
+            }
+            
+            document.getElementById('resultsPanel').style.display = 'block';
+
+            // 6. Fire the communication protocol redirect after a short micro-delay
+            setTimeout(() => {
+                if (channel === 'whatsapp') {
+                    window.location.href = `https://wa.me/${storeStaffNumber}?text=${encodedMessage}`;
+                } else if (channel === 'sms') {
+                    window.location.href = `sms:${storeStaffNumber}?body=${encodedMessage}`;
+                }
+            }, 700);
+        }
+
+        function switchLanguage(lang) {
+            const elements = document.querySelectorAll('[data-en]');
+            elements.forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = text;
+                    } else if (el.tagName === 'OPTION') {
+                        el.textContent = text;
+                    } else {
+                        el.innerHTML = text;
+                    }
+                }
+            });
+
+            // Re-apply live proximity distance/time text if geolocation was already calculated
+            if (lastCalculatedKm !== null) {
+                updateProximityDisplay();
+            }
         }
     </script>
 
