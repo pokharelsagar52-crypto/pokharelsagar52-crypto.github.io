@@ -727,7 +727,7 @@
                     <div class="category-icon">🥤</div>
                     <div class="category-info">
                         <h3 data-en="Cold Drinks & Energy" data-ne="चिसो पेय र ऊर्जा पेय">Cold Drinks & Energy</h3>
-                        <p data-en="Coke, Sprite, Red Bull, Sting" data-ne="कोकाकोला, स्प्राइट, रेड बुल, स्टिंग">Coke, Sprite, Red Bull, Sting</p>
+                        <p data-en="Coke, Sprite, Red Bull, Sting" data-en="कोकाकोला, स्प्राइट, रेड बुल, स्टिंग">Coke, Sprite, Red Bull, Sting</p>
                     </div>
                 </div>
                 <span class="stock-badge" data-en="Cold" data-ne="चिसो">Cold</span>
@@ -954,15 +954,15 @@
                 icePacks = Math.ceil(headcount / 6);
             }
 
-            // 4. Format the exact text payload your staff will receive using your custom hook format
-            const staffMessage = `Hey! This is ${customerName} Just inquiring for my pickup for later at Bokse Chowk. Here's what we locked in:\n` +
+            // 4. Format the warm, customer-facing prefilled message template
+            const staffMessage = `Hey! This is ${customerName} I am just inquiring about the bundle pricings for my event. Here's what we locked in:\n` +
                                  `- Drinking Water: ${waterLiters}L\n` +
                                  `- Soft Drinks / Mixers: ~${softDrinkCases} Cases\n` +
                                  `- Chilled Beer: ~${beerBottles} Bottles\n` +
                                  `- Spirits / Quarters: ~${whiskeyQuarters} Quarters (Old Durbar/Khukuri/8848)\n` +
                                  `- Ice Packets: ~${icePacks} Packs\n` +
                                  `- Headcount: ~${headcount} People\n` +
-                                 `Give me a quote on these! 🍻\n\n` +
+                                 `Call/Text me with the estimated total of this party bundle🍻\n\n` +
                                  `📱 Contact: ${customerPhone}`;
 
             const encodedMessage = encodeURIComponent(staffMessage);
