@@ -129,48 +129,57 @@
             text-shadow: 0 0 10px rgba(0, 245, 212, 0.8);
         }
 
-        /* --- LIVE PROXIMITY CARD STYLING --- */
-        .proximity-card {
+        /* --- INTEGRATED LIVE DISTANCE STRIP (VALUE BAR BELOW LED SIGN) --- */
+        .live-distance-strip {
             width: 100%;
-            background: #121212;
-            border: 1px solid #262626;
-            border-radius: 12px;
-            padding: 16px;
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .proximity-top {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-left: 4px solid #00f5d4;
+            border-radius: 8px;
+            padding: 10px 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
-        .proximity-title {
-            font-size: 0.75rem;
+        .live-distance-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .live-distance-title {
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             color: #f59e0b;
+            letter-spacing: 0.5px;
         }
 
-        .proximity-badge {
-            font-size: 0.75rem;
-            background: rgba(0, 245, 212, 0.15);
+        .live-distance-value {
+            font-size: 0.9rem;
+            font-weight: 800;
             color: #00f5d4;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-weight: 600;
         }
 
-        .proximity-desc {
-            font-size: 0.85rem;
-            color: #ccc;
-            margin: 0;
-            line-height: 1.4;
+        .live-distance-map-link {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            background: #2563eb;
+            padding: 6px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+            white-space: nowrap;
+        }
+
+        .live-distance-map-link:hover {
+            background: #1d4ed8;
         }
 
         /* Bulk & Event Notice Banner */
@@ -238,19 +247,6 @@
 
         .btn-secondary:hover {
             background-color: #343a40;
-        }
-
-        .btn-directions {
-            background-color: #2563eb;
-            color: white;
-            font-size: 0.85rem;
-            padding: 11px;
-            margin-top: 4px;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
-        }
-
-        .btn-directions:hover {
-            background-color: #1d4ed8;
         }
 
         /* --- INTEGRATED PARTY CALCULATOR SECTION --- */
@@ -555,17 +551,14 @@
             <div class="sign-hours-line2">9 AM - 8 PM</div>
         </div>
 
-        <!-- LIVE PROXIMITY & MOTORBIKE TRAVEL TIME CARD -->
-        <div id="proximityCard" class="proximity-card">
-            <div class="proximity-top">
-                <span class="proximity-title" data-en="📍 Live Corridor Distance" data-ne="📍 तपाईंको दूरी र समय">📍 Live Corridor Distance</span>
-                <span id="proximityBadge" class="proximity-badge" data-en="Locating position..." data-ne="स्थान पत्ता लगाउँदै...">Locating position...</span>
+        <!-- INTEGRATED VALUE STRIP (LIVE DISTANCE / TIME & MAP BUTTON BELOW LED SIGN) -->
+        <div class="live-distance-strip">
+            <div class="live-distance-left">
+                <span class="live-distance-title" data-en="📍 Bokse Corridor Distance" data-ne="📍 बोक्से चोक दूरी र समय">📍 Bokse Corridor Distance</span>
+                <span id="liveDistanceText" class="live-distance-value" data-en="Locating GPS position..." data-ne="स्थान पत्ता लगाउँदै...">Locating GPS position...</span>
             </div>
-            <p id="proximityText" class="proximity-desc" data-en="Calculating motorbike travel time from your location to Bokse Chowk..." data-ne="तपाईंको स्थानबाट बोक्से चोकसम्मको मोटरबाइक यात्रा समय गणना हुँदैछ...">
-                Calculating motorbike travel time from your location to Bokse Chowk...
-            </p>
-            <a id="liveDirectionsBtn" href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="btn btn-directions" data-en="🗺️ Get Live Motorbike Directions" data-ne="🗺️ लाइभ डाइरेक्शन (बाटो) हेर्नुहोस्">
-                🗺️ Get Live Motorbike Directions
+            <a id="liveDirectionsBtn" href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="live-distance-map-link" data-en="🗺️ Get Directions" data-ne="🗺️ बाटो हेर्नुहोस्">
+                🗺️ Get Directions
             </a>
         </div>
 
@@ -894,34 +887,25 @@
         });
 
         function updateProximityDisplay() {
-            const badge = document.getElementById('proximityBadge');
-            const text = document.getElementById('proximityText');
+            const textVal = document.getElementById('liveDistanceText');
             const currentLang = document.getElementById('langSelector').value;
 
             if (lastCalculatedKm !== null) {
                 if (currentLang === 'ne') {
-                    badge.textContent = `${lastCalculatedKm.toFixed(1)} किमी टाढा • ~${lastCalculatedMins} मिनेट राइड`;
-                    text.textContent = `बोक्से चोक, गाईघाटस्थित एस एन्ड एन कोल्ड स्टोर तपाईंको स्थानबाट करिब ${lastCalculatedKm.toFixed(1)} किमी टाढा छ।`;
+                    textVal.textContent = `${lastCalculatedKm.toFixed(1)} किमी टाढा • ~${lastCalculatedMins} मिनेट राइड`;
                 } else {
-                    badge.textContent = `${lastCalculatedKm.toFixed(1)} km away • ~${lastCalculatedMins} min ride`;
-                    text.textContent = `S&N Cold Store at Bokse Chowk is approximately ${lastCalculatedKm.toFixed(1)} km from your current GPS position.`;
+                    textVal.textContent = `${lastCalculatedKm.toFixed(1)} km away • ~${lastCalculatedMins} min ride`;
                 }
-                badge.setAttribute('data-en', `${lastCalculatedKm.toFixed(1)} km away • ~${lastCalculatedMins} min ride`);
-                badge.setAttribute('data-ne', `${lastCalculatedKm.toFixed(1)} किमी टाढा • ~${lastCalculatedMins} मिनेट राइड`);
-                text.setAttribute('data-en', `S&N Cold Store at Bokse Chowk is approximately ${lastCalculatedKm.toFixed(1)} km from your current GPS position.`);
-                text.setAttribute('data-ne', `बोक्से चोक, गाईघाटस्थित एस एन्ड एन कोल्ड स्टोर तपाईंको स्थानबाट करिब ${lastCalculatedKm.toFixed(1)} किमी टाढा छ।`);
+                textVal.setAttribute('data-en', `${lastCalculatedKm.toFixed(1)} km away • ~${lastCalculatedMins} min ride`);
+                textVal.setAttribute('data-ne', `${lastCalculatedKm.toFixed(1)} किमी टाढा • ~${lastCalculatedMins} मिनेट राइड`);
             }
         }
 
         function setProximityFallback() {
-            const badge = document.getElementById('proximityBadge');
-            const text = document.getElementById('proximityText');
-            badge.textContent = "Sagarmatha Highway Hub";
-            badge.setAttribute('data-en', "Sagarmatha Highway Hub");
-            badge.setAttribute('data-ne', "सगरमाथा राजमार्ग हब");
-            text.textContent = "Location permission unavailable. Serving Bokse Chowk corridor live.";
-            text.setAttribute('data-en', "Location permission unavailable. Serving Bokse Chowk corridor live.");
-            text.setAttribute('data-ne', "लोकेशन अनुमति छैन। बोक्से चोक हबबाट सेवा सुचारू छ।");
+            const textVal = document.getElementById('liveDistanceText');
+            textVal.textContent = "Sagarmatha Highway Hub";
+            textVal.setAttribute('data-en', "Sagarmatha Highway Hub");
+            textVal.setAttribute('data-ne', "सगरमाथा राजमार्ग हब");
         }
 
         function processOrder(channel) {
@@ -953,36 +937,33 @@
             if (crowdVibe === 'light') {
                 waterLiters = headcount * 1.5;
                 softDrinkCases = Math.ceil(headcount / 12);
-                beerBottles = Math.ceil(headcount / 6);       // Light beer presence
-                whiskeyQuarters = Math.ceil(headcount / 12);   // Minimal spirits
+                beerBottles = Math.ceil(headcount / 6);       
+                whiskeyQuarters = Math.ceil(headcount / 12);   
                 icePacks = Math.ceil(headcount / 15);
             } else if (crowdVibe === 'standard') {
                 waterLiters = headcount * 2.0;
-                softDrinkCases = Math.ceil(headcount / 8);     // More mixers (Coke/Sprite/Soda)
-                beerBottles = Math.ceil(headcount / 2.5);      // Solid beer count
-                whiskeyQuarters = Math.ceil(headcount / 4);    // Standard whiskey/rum quarters
+                softDrinkCases = Math.ceil(headcount / 8);     
+                beerBottles = Math.ceil(headcount / 2.5);      
+                whiskeyQuarters = Math.ceil(headcount / 4);    
                 icePacks = Math.ceil(headcount / 10);
             } else { // heavy celebration
                 waterLiters = headcount * 2.5;
-                softDrinkCases = Math.ceil(headcount / 6);     // Heavy mixers
-                beerBottles = Math.ceil(headcount / 1.5);      // Heavy beer volume
-                whiskeyQuarters = Math.ceil(headcount / 2);    // High spirits / quarters ratio
+                softDrinkCases = Math.ceil(headcount / 6);     
+                beerBottles = Math.ceil(headcount / 1.5);      
+                whiskeyQuarters = Math.ceil(headcount / 2);    
                 icePacks = Math.ceil(headcount / 6);
             }
 
-            // 4. Format the exact text payload your staff will receive
-            const staffMessage = `🚨 *NEW SN CORRIDOR LEAD* 🚨\n` +
-                                 `👤 Name: ${customerName}\n` +
-                                 `📱 Phone: ${customerPhone}\n` +
-                                 `👥 Headcount: ${headcount} People\n` +
-                                 `🎉 Vibe: ${crowdVibe.toUpperCase()}\n\n` +
-                                 `📦 *Exact Volume Breakdown:*\n` +
+            // 4. Format the exact text payload your staff will receive using your custom hook format
+            const staffMessage = `Hey! This is ${customerName} Just inquiring for my pickup for later at Bokse Chowk. Here's what we locked in:\n` +
                                  `- Drinking Water: ${waterLiters}L\n` +
-                                 `- Soft Drinks / Mixers: ~${softDrinkCases} Case(s)\n` +
+                                 `- Soft Drinks / Mixers: ~${softDrinkCases} Cases\n` +
                                  `- Chilled Beer: ~${beerBottles} Bottles\n` +
                                  `- Spirits / Quarters: ~${whiskeyQuarters} Quarters (Old Durbar/Khukuri/8848)\n` +
-                                 `- Ice Packets: ~${icePacks} Pack(s)\n` +
-                                 `⚡ *Action:* Call or text back to confirm pickup window at Bokse Chowk.`;
+                                 `- Ice Packets: ~${icePacks} Packs\n` +
+                                 `- Headcount: ~${headcount} People\n` +
+                                 `Give me a quote on these! 🍻\n\n` +
+                                 `📱 Contact: ${customerPhone}`;
 
             const encodedMessage = encodeURIComponent(staffMessage);
             const storeStaffNumber = "9779849175714"; // Your business/staff number
