@@ -253,7 +253,7 @@
             background-color: #1d4ed8;
         }
 
-        /* --- ESTIMATOR / CALCULATOR SECTION STYLING --- */
+        /* --- INTEGRATED PARTY CALCULATOR SECTION --- */
         .calculator-box {
             width: 100%;
             background: #111;
@@ -535,7 +535,7 @@
 <body>
 
     <div class="container">
-        <!-- TOP BAR: CLEAN BRAND HOOK & LANGUAGE SELECTOR -->
+        <!-- TOP BAR: CLEAN BRAND HOOK & LANGUAGE DROPDOWN -->
         <div class="top-bar">
             <div class="brand-hook">
                 <span class="brand-main-hook" data-en="⚡ SN Cold Store" data-ne="⚡ एस एन्ड एन कोल्ड स्टोर">⚡ SN Cold Store</span>
@@ -587,14 +587,14 @@
             <div class="calc-header">
                 <span class="calc-badge" data-en="⚡ Quick Party Calculator" data-ne="⚡ पार्टी क्याल्कुलेटर">⚡ Quick Party Calculator</span>
                 <h3 class="calc-title" data-en="SN COLD STORE PARTY CALCULATOR" data-ne="एस एन्ड एन पार्टी क्याल्कुलेटर">SN COLD STORE PARTY CALCULATOR</h3>
-                <p class="calc-desc" data-en="Enter your details to calculate event volume and notify staff." data-ne="विवरण भरेर कार्यक्रमको लागि आवश्यक परिमाण पत्ता लगाउनुहोस् र स्टाफलाई जानकारी दिनुहोस्।">
-                    Enter your details to calculate event volume and notify staff.
+                <p class="calc-desc" data-en="Enter your details to calculate exact drink & alcohol volume." data-ne="कार्यक्रमको लागि आवश्यक पेयपदार्थ र मदिराको ठ्याक्कै परिमाण निकाल्नुहोस्।">
+                    Enter your details to calculate exact drink & alcohol volume.
                 </p>
             </div>
 
             <!-- Input 1: Name / Location -->
             <div class="calc-form-group">
-                <label class="calc-label" data-en="Your Name / Location (e.g., Hari from Bokse):" data-en-placeholder="Hari (Bokse Corridor)" data-ne="तपाईंको नाम / स्थान (जस्तै: हरि, बोक्से):">Your Name / Location (e.g., Hari from Bokse):</label>
+                <label class="calc-label" data-en="Your Name / Location (e.g., Hari from Bokse):" data-ne="तपाईंको नाम / स्थान (जस्तै: हरि, बोक्से):">Your Name / Location (e.g., Hari from Bokse):</label>
                 <input type="text" id="customerName" class="calc-input" placeholder="Hari (Bokse Corridor)" required />
             </div>
 
@@ -604,9 +604,19 @@
                 <input type="number" id="headcount" class="calc-input" placeholder="e.g., 25" min="1" max="1000" required />
             </div>
 
-            <!-- Input 3: Mobile Number -->
+            <!-- Input 3: Crowd Vibe / Drinking Nature -->
+            <div class="calc-form-group">
+                <label class="calc-label" data-en="Nature of Crowd / Party Vibe:" data-ne="भीडको प्रकृति / पार्टीको माहोल:">Nature of Crowd / Party Vibe:</label>
+                <select id="crowdVibe" class="calc-select">
+                    <option value="light" data-en="Light / Family & Soft Drinks (Mostly water, juices & soda)" data-ne="हल्का / पारिवारिक जमघट (प्रशस्त पानी, जुस र सोडा)">Light / Family & Soft Drinks (Mostly water, juices & soda)</option>
+                    <option value="standard" data-en="Standard Get-Together (Balanced beer, whiskey & mixers)" data-ne="सामान्य जमघट (बियर, ह्विस्की र मिक्सरहरूको संतुलित मात्रा)">Standard Get-Together (Balanced beer, whiskey & mixers)</option>
+                    <option value="heavy" data-en="Heavy Celebration / Hard Drinkers (High spirits, beer & ice volume)" data-ne="कडा पार्टी / रमाइलो जमघट (भरपुर स्पिरिट, बियर र बरफ)">Heavy Celebration / Hard Drinkers (High spirits, beer & ice volume)</option>
+                </select>
+            </div>
+
+            <!-- Input 4: Mobile Number -->
             <div class="calc-form-group" style="margin-bottom: 15px;">
-                <label class="calc-label" data-en="Your Mobile Number (Required to unlock estimate):" data-ne="तपाईंको मोबाइल नम्बर (अवस्था हेर्न आवश्यक):">Your Mobile Number (Required to unlock estimate):</label>
+                <label class="calc-label" data-en="Your Mobile Number (Required to unlock estimate):" data-ne="तपाईंको मोबाइल नम्बर (अनुमानित सूची हेर्न):">Your Mobile Number (Required to unlock estimate):</label>
                 <input type="tel" id="customerPhone" class="calc-input" placeholder="e.g., 98XXXXXXXX" required />
             </div>
 
@@ -916,17 +926,18 @@
 
         function processOrder(channel) {
             const customerName = document.getElementById('customerName').value.trim() || "Customer";
-            const headcount = document.getElementById('headcount').value.trim();
+            const headcount = parseInt(document.getElementById('headcount').value.trim());
+            const crowdVibe = document.getElementById('crowdVibe').value;
             const customerPhone = document.getElementById('customerPhone').value.trim();
             const currentLang = document.getElementById('langSelector').value;
 
             // 1. Validation: Check empty fields
-            if (!headcount || !customerPhone) {
-                alert(currentLang === 'ne' ? "कृपया पाहुनाको संख्या र मोबाइल नम्बर भर्नुहोस्।" : "Please fill in your headcount and mobile number.");
+            if (isNaN(headcount) || headcount <= 0 || !customerPhone) {
+                alert(currentLang === 'ne' ? "कृपया सही पाहुनाको संख्या र मोबाइल नम्बर भर्नुहोस्।" : "Please enter a valid headcount and mobile number.");
                 return;
             }
 
-            // 2. Validation: Anti-Dummy Check (blocks 0000000000, 1111111111, short strings)
+            // 2. Validation: Anti-Dummy Check
             const isDummy = /^(\d)\1+$/.test(customerPhone);
             const isValidLength = customerPhone.length >= 10;
 
@@ -936,21 +947,42 @@
                 return;
             }
 
-            // 3. Perform internal calculations
-            const estimatedWaterLiters = headcount * 1.5;
-            const estimatedSoftDrinkCases = Math.ceil(headcount / 10);
-            const estimatedIceBags = Math.ceil(headcount / 15);
+            // 3. Dynamic Calculation based on Crowd Vibe (Alcohol & Mixers)
+            let waterLiters, softDrinkCases, beerBottles, whiskeyQuarters, icePacks;
+
+            if (crowdVibe === 'light') {
+                waterLiters = headcount * 1.5;
+                softDrinkCases = Math.ceil(headcount / 12);
+                beerBottles = Math.ceil(headcount / 6);       // Light beer presence
+                whiskeyQuarters = Math.ceil(headcount / 12);   // Minimal spirits
+                icePacks = Math.ceil(headcount / 15);
+            } else if (crowdVibe === 'standard') {
+                waterLiters = headcount * 2.0;
+                softDrinkCases = Math.ceil(headcount / 8);     // More mixers (Coke/Sprite/Soda)
+                beerBottles = Math.ceil(headcount / 2.5);      // Solid beer count
+                whiskeyQuarters = Math.ceil(headcount / 4);    // Standard whiskey/rum quarters
+                icePacks = Math.ceil(headcount / 10);
+            } else { // heavy celebration
+                waterLiters = headcount * 2.5;
+                softDrinkCases = Math.ceil(headcount / 6);     // Heavy mixers
+                beerBottles = Math.ceil(headcount / 1.5);      // Heavy beer volume
+                whiskeyQuarters = Math.ceil(headcount / 2);    // High spirits / quarters ratio
+                icePacks = Math.ceil(headcount / 6);
+            }
 
             // 4. Format the exact text payload your staff will receive
             const staffMessage = `🚨 *NEW SN CORRIDOR LEAD* 🚨\n` +
                                  `👤 Name: ${customerName}\n` +
                                  `📱 Phone: ${customerPhone}\n` +
-                                 `👥 Headcount: ${headcount} People\n\n` +
-                                 `📦 *Estimated Requirements:*\n` +
-                                 `- Drinking Water: ${estimatedWaterLiters}L\n` +
-                                 `- Soft Drinks / Mixers: ~${estimatedSoftDrinkCases} Cases\n` +
-                                 `- Ice: ~${estimatedIceBags} Packets\n` +
-                                 `⚡ *Action:* Call or text back to confirm pickup window.`;
+                                 `👥 Headcount: ${headcount} People\n` +
+                                 `🎉 Vibe: ${crowdVibe.toUpperCase()}\n\n` +
+                                 `📦 *Exact Volume Breakdown:*\n` +
+                                 `- Drinking Water: ${waterLiters}L\n` +
+                                 `- Soft Drinks / Mixers: ~${softDrinkCases} Case(s)\n` +
+                                 `- Chilled Beer: ~${beerBottles} Bottles\n` +
+                                 `- Spirits / Quarters: ~${whiskeyQuarters} Quarters (Old Durbar/Khukuri/8848)\n` +
+                                 `- Ice Packets: ~${icePacks} Pack(s)\n` +
+                                 `⚡ *Action:* Call or text back to confirm pickup window at Bokse Chowk.`;
 
             const encodedMessage = encodeURIComponent(staffMessage);
             const storeStaffNumber = "9779849175714"; // Your business/staff number
@@ -958,17 +990,21 @@
             // 5. Unlock the results on the HTML screen for the user
             if (currentLang === 'ne') {
                 document.getElementById('outputDetails').innerHTML = 
-                    `<strong>${headcount} जना पाहुनाको लागि (${customerName}):</strong><br>` +
-                    `• ${estimatedWaterLiters} लिटर पिउने पानी<br>` +
-                    `• ~${estimatedSoftDrinkCases} क्यारेट चिसो पेय / सोडा<br>` +
-                    `• ~${estimatedIceBags} प्याकेट बरफ (Ice)<br><br>` +
+                    `<strong>${headcount} जना पाहुनाका लागि (${customerName} - ${crowdVibe.toUpperCase()} जमघट):</strong><br>` +
+                    `• पिउने पानी: <strong>${waterLiters} लिटर</strong><br>` +
+                    `• चिसो पेय / सोडा (Mixers): <strong>~${softDrinkCases} क्यारेट</strong><br>` +
+                    `• चिसो बियर: <strong>~${beerBottles} बोतल</strong><br>` +
+                    `• स्पिरिट्स / क्वाटर (Old Durbar / Khukuri): <strong>~${whiskeyQuarters} वटा</strong><br>` +
+                    `• बरफ (Ice): <strong>~${icePacks} प्याकेट</strong><br><br>` +
                     `<span style="color: #4cd137; font-size: 0.85rem;">✓ ${channel.toUpperCase()} मार्फत एस एन्ड एन कोल्ड स्टोरमा अर्डर सफलतापूर्वक पठाइयो!</span>`;
             } else {
                 document.getElementById('outputDetails').innerHTML = 
-                    `<strong>For ${headcount} Guests (${customerName}):</strong><br>` +
-                    `• ${estimatedWaterLiters} Liters of Water<br>` +
-                    `• ~${estimatedSoftDrinkCases} Cases of Soft Drinks/Mixers<br>` +
-                    `• ~${estimatedIceBags} Packets of Ice<br><br>` +
+                    `<strong>For ${headcount} Guests (${customerName} - ${crowdVibe} vibe):</strong><br>` +
+                    `• Drinking Water: <strong>${waterLiters}L</strong><br>` +
+                    `• Soft Drinks / Mixers: <strong>~${softDrinkCases} Case(s)</strong><br>` +
+                    `• Chilled Beer: <strong>~${beerBottles} Bottles</strong><br>` +
+                    `• Spirits / Quarters: <strong>~${whiskeyQuarters} Quarters (Old Durbar/Khukuri/8848)</strong><br>` +
+                    `• Ice Packets: <strong>~${icePacks} Pack(s)</strong><br><br>` +
                     `<span style="color: #4cd137; font-size: 0.85rem;">✓ Order successfully dispatched via ${channel.toUpperCase()} to SN Cold Store staff!</span>`;
             }
             
