@@ -53,6 +53,32 @@
             letter-spacing: -0.3px;
         }
 
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-check-stock-btn {
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background 0.2s;
+        }
+
+        .nav-check-stock-btn:hover {
+            background-color: #1e293b;
+        }
+
         .lang-dropdown-wrapper {
             position: relative;
             display: inline-block;
@@ -536,11 +562,14 @@
             <div class="brand-hook">
                 <span class="brand-main-hook" data-en="⚡ SN Cold Store" data-ne="⚡ एस एन्ड एन कोल्ड स्टोर">⚡ SN Cold Store</span>
             </div>
-            <div class="lang-dropdown-wrapper">
-                <select id="langSelector" class="lang-select" onchange="switchLanguage(this.value)">
-                    <option value="en">English</option>
-                    <option value="ne">नेपाली</option>
-                </select>
+            <div class="top-bar-right">
+                <button onclick="openInventorySearch()" class="nav-check-stock-btn" data-en="🔍 Check Stock" data-ne="🔍 स्टक चेक">🔍 Check Stock</button>
+                <div class="lang-dropdown-wrapper">
+                    <select id="langSelector" class="lang-select" onchange="switchLanguage(this.value)">
+                        <option value="en">English</option>
+                        <option value="ne">नेपाली</option>
+                    </select>
+                </div>
             </div>
         </div>
 
@@ -727,7 +756,7 @@
                     <div class="category-icon">🥤</div>
                     <div class="category-info">
                         <h3 data-en="Cold Drinks & Energy" data-ne="चिसो पेय र ऊर्जा पेय">Cold Drinks & Energy</h3>
-                        <p data-en="Coke, Sprite, Red Bull, Sting" data-en="कोकाकोला, स्प्राइट, रेड बुल, स्टिंग">Coke, Sprite, Red Bull, Sting</p>
+                        <p data-en="Coke, Sprite, Red Bull, Sting" data-ne="कोकाकोला, स्प्राइट, रेड बुल, स्टिंग">Coke, Sprite, Red Bull, Sting</p>
                     </div>
                 </div>
                 <span class="stock-badge" data-en="Cold" data-ne="चिसो">Cold</span>
@@ -841,6 +870,13 @@
         function toggleCard(cardId) {
             const card = document.getElementById(cardId);
             card.classList.toggle('active');
+        }
+
+        function openInventorySearch() {
+            const categoriesHeader = document.querySelector('.categories-header');
+            if (categoriesHeader) {
+                categoriesHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         let lastCalculatedKm = null;
