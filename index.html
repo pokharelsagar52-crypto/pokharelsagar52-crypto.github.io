@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SN Cold Store | Bokse Chowk, Gaighat</title>
-    <meta name="description" content="SN Cold Store at Bokse Chowk, Gaighat, Udayapur. Open daily 9 AM–8 PM for chilled beer, liquor, soft drinks, water, snacks, and bulk party orders.">
+    <title>SN Cold Store | Bokse Chowk (Next to Veterinary Office), Gaighat</title>
+    <meta name="description" content="SN Cold Store at Bokse Chowk next to the Veterinary Office along the Sagarmatha Highway (Gaighat–Diktel Highway) in Bokse, Gaighat, Triyuga (56300). Open daily 9 AM–8 PM for chilled beer, drinks, spirits, bhujiyas, playing cards, and call-ahead counter pickup.">
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Store",
   "name": "SN Cold Store",
-  "alternateName": "एस एन्ड एन कोल्ड स्टोर",
+  "alternateName": "एस.एन. कोल्ड स्टोर",
   "url": "https://sncoldstore.com/",
   "telephone": "+977-9849175714",
   "priceRange": "$$",
-  "description": "SN Cold Store at Bokse Chowk, Gaighat, Udayapur along the Sagarmatha Highway. Open daily 9 AM–8 PM for chilled beer, liquor, soft drinks, water, snacks, and bulk party orders.",
+  "description": "Retail and wholesale cold store at Bokse Chowk next to the Veterinary Office along the Sagarmatha Highway (Gaighat–Diktel Highway) in Bokse, Gaighat, Triyuga (56300). Open daily 9 AM–8 PM for chilled beer, drinks, spirits, bhujiyas, playing cards, and call-ahead counter pickup.",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Bokse Chowk, Sagarmatha Highway",
-    "addressLocality": "Gaighat",
+    "streetAddress": "Bokse Chowk (Next to Veterinary Office), Sagarmatha Highway (Gaighat–Diktel Highway)",
+    "addressLocality": "Bokse, Gaighat, Triyuga",
+    "postalCode": "56300",
     "addressRegion": "Udayapur, Koshi Province",
     "addressCountry": "NP"
   },
@@ -42,6 +43,24 @@
 }
 </script>
     <style>
+        :root {
+            /* Palette inspired by your physical signboard (crimson, gold, navy) & shopfront (warm rose/pink, timber wood, warm golden banner) */
+            --bg-cream: #fdf8f2;
+            --bg-tint: #f8ece6;
+            --sign-crimson: #c62828;
+            --sign-crimson-dark: #8e1919;
+            --sign-gold: #d4a024;
+            --sign-gold-light: #f3c64f;
+            --sign-navy: #14243b;
+            --shop-pink: #d97a98;
+            --shop-pink-soft: #fae8ee;
+            --wood-brown: #4a2e1d;
+            --wood-dark: #2a180e;
+            --ice-cyan: #00f5d4;
+            --text-dark: #1c1917;
+            --text-muted: #57534e;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -50,12 +69,13 @@
         }
 
         body {
-            background-color: #f7f7f7;
-            color: #111;
+            background: linear-gradient(180deg, #fbf3ea 0%, #f7e6e8 50%, #f5efe6 100%);
+            color: var(--text-dark);
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 15px;
+            min-height: 100vh;
         }
 
         .container {
@@ -67,7 +87,7 @@
             gap: 14px;
         }
 
-        /* --- TOP BAR (HOOK LOGO & LANGUAGE DROPDOWN) --- */
+        /* --- TOP BAR (CUSTOM SIGNBOARD CREST LOGO & LANGUAGE DROPDOWN) --- */
         .top-bar {
             width: 100%;
             display: flex;
@@ -78,16 +98,61 @@
 
         .brand-hook {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 9px;
             text-decoration: none;
+        }
+
+        .brand-crest {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(145deg, var(--sign-crimson) 0%, var(--sign-crimson-dark) 100%);
+            border: 2px solid var(--sign-gold);
+            border-radius: 9px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 8px rgba(198, 40, 40, 0.28);
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .brand-crest-stars {
+            font-size: 7px;
+            line-height: 1;
+            color: var(--sign-gold-light);
+            letter-spacing: 1px;
+            margin-bottom: 1px;
+        }
+
+        .brand-crest-letters {
+            font-size: 13px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            line-height: 1;
+        }
+
+        .brand-text-stack {
+            display: flex;
+            flex-direction: column;
         }
 
         .brand-main-hook {
             font-weight: 900;
-            font-size: 1.05rem;
-            color: #f77f00;
+            font-size: 1.02rem;
+            color: var(--sign-crimson);
             text-transform: uppercase;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.2px;
+            line-height: 1.1;
+        }
+
+        .brand-sub-hook {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--wood-brown);
+            letter-spacing: 0.2px;
         }
 
         .top-bar-right {
@@ -97,23 +162,23 @@
         }
 
         .nav-check-stock-btn {
-            background-color: #0f172a;
+            background-color: var(--sign-navy);
             color: #ffffff;
-            padding: 6px 10px;
-            border-radius: 6px;
+            padding: 7px 10px;
+            border-radius: 7px;
             font-size: 0.75rem;
             font-weight: 700;
-            border: none;
+            border: 1px solid rgba(212, 160, 36, 0.45);
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: background 0.2s;
+            box-shadow: 0 2px 6px rgba(20, 36, 59, 0.22);
+            transition: background 0.2s, transform 0.15s;
         }
 
         .nav-check-stock-btn:hover {
-            background-color: #1e293b;
+            background-color: #1f3554;
         }
 
         .lang-dropdown-wrapper {
@@ -122,88 +187,137 @@
         }
 
         .lang-select {
-            background: #111;
+            background: var(--wood-brown);
             color: #fff;
-            border: none;
+            border: 1px solid var(--sign-gold);
             padding: 6px 10px;
-            border-radius: 6px;
+            border-radius: 7px;
             font-size: 0.8rem;
             font-weight: 700;
             cursor: pointer;
             outline: none;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(74, 46, 29, 0.2);
         }
 
-        /* --- PROFESSIONAL ANIMATED LED SIGN BOARD STYLING --- */
+        /* --- SIGNBOARD-INSPIRED ANIMATED HERO BOARD --- */
         .led-sign-board {
             width: 100%;
-            background: #111;
-            border: 6px solid #222;
-            border-radius: 12px;
-            padding: 22px 15px;
+            background: radial-gradient(circle at top, #271519 0%, #151822 70%, #0f172a 100%);
+            border: 4px solid var(--sign-gold);
+            border-radius: 14px;
+            padding: 20px 15px 18px 15px;
             text-align: center;
             position: relative;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3), inset 0 0 15px rgba(0,0,0,0.8);
+            box-shadow: 0 10px 26px rgba(142, 25, 25, 0.22), inset 0 0 18px rgba(0, 0, 0, 0.85);
             overflow: hidden;
         }
 
         .led-sign-board::before {
             content: '';
             position: absolute;
-            top: 4px; left: 4px; right: 4px; bottom: 4px;
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 1.5px dashed rgba(243, 198, 79, 0.55);
+            border-radius: 9px;
             pointer-events: none;
-            animation: borderPulse 1.5s infinite alternate;
+            animation: borderPulse 2.2s infinite alternate;
+        }
+
+        /* Corner triangles inspired by your physical signboard frame */
+        .sign-corner {
+            position: absolute;
+            width: 0;
+            height: 0;
+            pointer-events: none;
+        }
+        .sign-corner.tl {
+            top: 0; left: 0;
+            border-top: 22px solid var(--sign-navy);
+            border-right: 22px solid transparent;
+        }
+        .sign-corner.tr {
+            top: 0; right: 0;
+            border-top: 22px solid var(--sign-navy);
+            border-left: 22px solid transparent;
+        }
+        .sign-corner.bl {
+            bottom: 0; left: 0;
+            border-bottom: 22px solid var(--sign-navy);
+            border-right: 22px solid transparent;
+        }
+        .sign-corner.br {
+            bottom: 0; right: 0;
+            border-bottom: 22px solid var(--sign-navy);
+            border-left: 22px solid transparent;
         }
 
         @keyframes borderPulse {
-            0% { opacity: 0.3; border-color: #ff3333; box-shadow: 0 0 5px #ff3333; }
-            33% { opacity: 0.8; border-color: #33ff33; box-shadow: 0 0 8px #33ff33; }
-            66% { opacity: 0.5; border-color: #33ffff; box-shadow: 0 0 5px #33ffff; }
-            100% { opacity: 0.9; border-color: #ff33ff; box-shadow: 0 0 10px #ff33ff; }
+            0% { opacity: 0.45; border-color: #f3c64f; box-shadow: 0 0 6px rgba(243, 198, 79, 0.4); }
+            50% { opacity: 0.9; border-color: #ff6b6b; box-shadow: 0 0 10px rgba(255, 107, 107, 0.45); }
+            100% { opacity: 0.85; border-color: #00f5d4; box-shadow: 0 0 8px rgba(0, 245, 212, 0.4); }
+        }
+
+        .sign-stars {
+            color: var(--sign-gold-light);
+            font-size: 13px;
+            letter-spacing: 5px;
+            margin-bottom: 4px;
+            text-shadow: 0 0 6px rgba(243, 198, 79, 0.6);
         }
 
         .sign-title {
-            font-size: 32px;
+            font-size: 31px;
             font-weight: 900;
             color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 150, 0, 0.6);
+            letter-spacing: 1.2px;
+            text-shadow:
+                0 2px 0 var(--sign-crimson-dark),
+                0 0 14px rgba(214, 40, 40, 0.85),
+                0 0 24px rgba(243, 198, 79, 0.35);
             margin-bottom: 6px;
         }
 
+        .sign-ward-pill {
+            display: inline-block;
+            background: linear-gradient(90deg, #d4a024 0%, #f3c64f 50%, #d4a024 100%);
+            color: #1c1917;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 3px 14px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+        }
+
         .sign-hours-line1 {
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 700;
-            color: #ffb703;
+            color: #fbd38d;
             text-transform: uppercase;
             letter-spacing: 1px;
-            text-shadow: 0 0 8px rgba(255, 183, 3, 0.7);
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
 
         .sign-hours-line2 {
             font-size: 20px;
             font-weight: 800;
-            color: #00f5d4;
+            color: var(--ice-cyan);
             letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(0, 245, 212, 0.8);
+            text-shadow: 0 0 10px rgba(0, 245, 212, 0.75);
         }
 
-        /* --- INTEGRATED LIVE DISTANCE STRIP (VALUE BAR BELOW LED SIGN) --- */
+        /* --- INTEGRATED LIVE DISTANCE STRIP (NAVY & GOLD SIGNBOARD RIBBON) --- */
         .live-distance-strip {
             width: 100%;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-left: 4px solid #00f5d4;
-            border-radius: 8px;
+            background: var(--sign-navy);
+            border: 1.5px solid var(--sign-gold);
+            border-left: 5px solid var(--sign-crimson);
+            border-radius: 10px;
             padding: 10px 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(20, 36, 59, 0.18);
         }
 
         .live-distance-left {
@@ -214,55 +328,56 @@
 
         .live-distance-title {
             font-size: 0.7rem;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
-            color: #f59e0b;
-            letter-spacing: 0.5px;
+            color: var(--sign-gold-light);
+            letter-spacing: 0.4px;
         }
 
         .live-distance-value {
-            font-size: 0.9rem;
-            font-weight: 800;
-            color: #00f5d4;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--ice-cyan);
         }
 
         .live-distance-map-link {
             font-size: 0.75rem;
             font-weight: 700;
-            color: #fff;
-            background: #2563eb;
-            padding: 6px 10px;
-            border-radius: 6px;
+            color: #1c1917;
+            background: linear-gradient(135deg, #f3c64f 0%, #e09f1f 100%);
+            padding: 7px 11px;
+            border-radius: 7px;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 4px;
-            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
             white-space: nowrap;
         }
 
         .live-distance-map-link:hover {
-            background: #1d4ed8;
+            filter: brightness(1.06);
         }
 
-        /* Bulk & Event Notice Banner */
+        /* Bulk & Event Notice Banner (Inspired by warm golden storefront fascia banner) */
         .event-banner {
             width: 100%;
-            background: #fff3cd;
-            border: 1px solid #ffeeba;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #fff5d6 0%, #fde6a8 100%);
+            border: 1.5px solid #e6b44c;
+            border-left: 4px solid var(--shop-pink);
+            border-radius: 10px;
             padding: 12px 16px;
             text-align: center;
             font-size: 13px;
-            color: #856404;
+            color: #5c3a14;
             font-weight: 500;
-            line-height: 1.4;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            line-height: 1.45;
+            box-shadow: 0 3px 8px rgba(212, 160, 36, 0.12);
         }
 
         .event-banner a {
-            color: #d66f00;
-            font-weight: 700;
+            color: var(--sign-crimson);
+            font-weight: 800;
             text-decoration: underline;
             display: inline-block;
             margin-top: 4px;
@@ -270,7 +385,8 @@
 
         .sub-text {
             font-size: 13px;
-            color: #666;
+            color: var(--wood-brown);
+            font-weight: 600;
             text-align: center;
             margin-top: 2px;
         }
@@ -279,9 +395,9 @@
         .btn {
             width: 100%;
             padding: 14px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 700;
             text-align: center;
             text-decoration: none;
             display: flex;
@@ -289,38 +405,44 @@
             justify-content: center;
             gap: 8px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: transform 0.15s, background 0.2s;
             border: none;
         }
 
+        .btn:active {
+            transform: scale(0.99);
+        }
+
         .btn-primary {
-            background-color: #f77f00;
+            background: linear-gradient(135deg, #d62828 0%, #b51d1d 100%);
             color: white;
-            box-shadow: 0 4px 12px rgba(247, 127, 0, 0.3);
+            border: 1.5px solid var(--sign-gold-light);
+            box-shadow: 0 5px 14px rgba(198, 40, 40, 0.28);
         }
 
         .btn-primary:hover {
-            background-color: #d66f00;
+            background: linear-gradient(135deg, #b51d1d 0%, #991616 100%);
         }
 
         .btn-secondary {
-            background-color: #212529;
+            background-color: var(--sign-navy);
             color: white;
+            border: 1px solid rgba(212, 160, 36, 0.4);
         }
 
         .btn-secondary:hover {
-            background-color: #343a40;
+            background-color: #1f3554;
         }
 
-        /* --- INTEGRATED PARTY CALCULATOR SECTION --- */
+        /* --- INTEGRATED PARTY CALCULATOR SECTION (WARM TIMBER COUNTER & GOLD TRIM) --- */
         .calculator-box {
             width: 100%;
-            background: #111;
+            background: linear-gradient(180deg, var(--wood-brown) 0%, var(--wood-dark) 100%);
             color: #fff;
-            border: 1px solid #262626;
-            border-radius: 12px;
+            border: 2px solid var(--sign-gold);
+            border-radius: 14px;
             padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 26px rgba(42, 24, 14, 0.28);
         }
 
         .calc-header {
@@ -329,25 +451,27 @@
         }
 
         .calc-badge {
-            background: rgba(245, 158, 11, 0.15);
-            color: #f59e0b;
-            padding: 4px 10px;
+            background: rgba(243, 198, 79, 0.2);
+            color: var(--sign-gold-light);
+            border: 1px solid rgba(243, 198, 79, 0.45);
+            padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.75rem;
-            font-weight: bold;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .calc-title {
             color: #fff;
-            font-size: 1.25rem;
+            font-size: 1.22rem;
             margin: 10px 0 6px 0;
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: 0.3px;
         }
 
         .calc-desc {
-            color: #aaa;
+            color: #e7d8c9;
             font-size: 0.85rem;
             line-height: 1.4;
             margin: 0;
@@ -361,20 +485,25 @@
             display: block;
             font-size: 0.8rem;
             margin-bottom: 4px;
-            color: #ccc;
+            color: #f5ebe0;
             font-weight: 600;
         }
 
         .calc-input, .calc-select {
             width: 100%;
             padding: 10px 12px;
-            background: #1a1a1a;
+            background: rgba(20, 12, 7, 0.75);
             color: #fff;
-            border: 1px solid #333;
-            border-radius: 6px;
+            border: 1px solid rgba(212, 160, 36, 0.45);
+            border-radius: 8px;
             font-size: 0.95rem;
             outline: none;
             box-sizing: border-box;
+        }
+
+        .calc-input:focus, .calc-select:focus {
+            border-color: var(--sign-gold-light);
+            box-shadow: 0 0 0 2px rgba(243, 198, 79, 0.2);
         }
 
         .calc-actions {
@@ -389,7 +518,7 @@
             color: white;
             border: none;
             padding: 12px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
             font-size: 0.9rem;
@@ -410,7 +539,7 @@
             color: white;
             border: none;
             padding: 12px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
             font-size: 0.9rem;
@@ -428,15 +557,15 @@
         .calc-output-box {
             display: none;
             margin-top: 20px;
-            background: #222;
-            border-left: 4px solid #ffaa00;
+            background: rgba(20, 12, 7, 0.85);
+            border-left: 4px solid var(--sign-gold-light);
             padding: 14px;
-            border-radius: 6px;
+            border-radius: 8px;
         }
 
         .calc-output-title {
             margin: 0 0 8px 0;
-            color: #ffaa00;
+            color: var(--sign-gold-light);
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -446,18 +575,19 @@
             margin: 0;
             font-size: 0.9rem;
             line-height: 1.5;
-            color: #ccc;
+            color: #f5ebe0;
         }
 
-        /* Categories Section */
+        /* Categories Section (Inspired by your shop's rose-pink walls & crisp white shelf lines) */
         .categories-header {
             width: 100%;
             font-size: 13px;
-            font-weight: 700;
-            color: #777;
+            font-weight: 800;
+            color: var(--wood-brown);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-top: 5px;
+            margin-top: 6px;
+            padding: 0 2px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -465,19 +595,21 @@
 
         .category-card {
             width: 100%;
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
+            background: #ffffff;
+            border: 1.5px solid #edd5dc;
+            border-left: 4px solid var(--shop-pink);
+            border-radius: 10px;
             padding: 12px 16px;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            box-shadow: 0 3px 8px rgba(74, 46, 29, 0.05);
             cursor: pointer;
-            transition: border-color 0.2s ease;
+            transition: border-color 0.2s ease, transform 0.15s ease;
         }
 
         .category-card:hover {
-            border-color: #f77f00;
+            border-color: var(--sign-crimson);
+            border-left-color: var(--sign-crimson);
         }
 
         .category-main-row {
@@ -495,34 +627,36 @@
 
         .category-icon {
             font-size: 22px;
-            background: #f1f3f5;
-            width: 40px;
-            height: 40px;
+            background: var(--shop-pink-soft);
+            border: 1px solid #f2cad6;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 8px;
+            border-radius: 9px;
         }
 
         .category-info h3 {
             font-size: 15px;
-            font-weight: 600;
-            color: #222;
+            font-weight: 700;
+            color: var(--wood-dark);
         }
 
         .category-info p {
             font-size: 13px;
-            color: #666;
+            color: var(--text-muted);
             margin-top: 2px;
         }
 
         .stock-badge {
-            font-size: 12px;
-            font-weight: 500;
-            color: #555;
-            background: #f1f3f5;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--sign-navy);
+            background: #fef3c7;
+            border: 1px solid #f3c64f;
             padding: 4px 8px;
-            border-radius: 4px;
+            border-radius: 6px;
         }
 
         /* Dropdown Panel Content */
@@ -531,7 +665,7 @@
             width: 100%;
             margin-top: 12px;
             padding-top: 12px;
-            border-top: 1px solid #eee;
+            border-top: 1px dashed #e5c9d1;
             flex-direction: column;
             gap: 10px;
         }
@@ -544,21 +678,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #f8f9fa;
+            background: #fdf8f6;
+            border: 1px solid #f2e4e8;
             padding: 10px 12px;
-            border-radius: 6px;
+            border-radius: 7px;
             font-size: 14px;
             font-weight: 500;
-            color: #333;
+            color: #292524;
         }
 
         .brand-sub-badge {
             font-size: 11px;
             background: #e2f0d9;
-            color: #385723;
-            padding: 2px 6px;
+            color: #2f521e;
+            padding: 2px 7px;
             border-radius: 4px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .dropdown-actions {
@@ -573,32 +708,41 @@
             font-size: 13px;
         }
 
-        /* Footer SEO & Location Section */
+        /* Footer SEO & Location Section (Inspired by your signboard's bottom navy & gold ribbon) */
         .footer-section {
             width: 100%;
+            background: var(--sign-navy);
+            color: #f8fafc;
+            border: 1.5px solid var(--sign-gold);
+            border-radius: 12px;
             text-align: center;
             font-size: 12px;
-            color: #666;
-            margin-top: 15px;
-            padding-bottom: 20px;
-            border-top: 1px solid #eaeaea;
-            padding-top: 15px;
-            line-height: 1.5;
+            margin-top: 12px;
+            padding: 16px 14px;
+            line-height: 1.55;
+            box-shadow: 0 6px 16px rgba(20, 36, 59, 0.16);
         }
 
         .footer-section strong {
-            color: #333;
+            color: var(--sign-gold-light);
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- TOP BAR: CLEAN BRAND HOOK & LANGUAGE DROPDOWN -->
+        <!-- TOP BAR: CUSTOM SIGNBOARD-INSPIRED LOGO CREST & LANGUAGE DROPDOWN -->
         <div class="top-bar">
-            <div class="brand-hook">
-                <span class="brand-main-hook" data-en="⚡ SN Cold Store" data-ne="⚡ एस एन्ड एन कोल्ड स्टोर">⚡ SN Cold Store</span>
-            </div>
+            <a href="#" class="brand-hook">
+                <div class="brand-crest" aria-hidden="true">
+                    <span class="brand-crest-stars">★★★</span>
+                    <span class="brand-crest-letters">SN</span>
+                </div>
+                <div class="brand-text-stack">
+                    <span class="brand-main-hook" data-en="SN Cold Store" data-ne="एस.एन. कोल्ड स्टोर">SN Cold Store</span>
+                    <span class="brand-sub-hook" data-en="Bokse Chowk • Gaighat" data-ne="त्रियुगा न.पा. १०, बोक्से">Bokse Chowk • Gaighat</span>
+                </div>
+            </a>
             <div class="top-bar-right">
                 <button onclick="openInventorySearch()" class="nav-check-stock-btn" data-en="🔍 Check Stock" data-ne="🔍 स्टक चेक">🔍 Check Stock</button>
                 <div class="lang-dropdown-wrapper">
@@ -610,17 +754,23 @@
             </div>
         </div>
 
-        <!-- TOP PRO ANIMATED LED SIGN BOARD -->
+        <!-- TOP SIGNBOARD-INSPIRED ANIMATED HERO BOARD -->
         <div class="led-sign-board">
-            <h1 class="sign-title" data-en="SN Cold Store" data-ne="एस एन्ड एन कोल्ड स्टोर">SN Cold Store</h1>
+            <span class="sign-corner tl"></span>
+            <span class="sign-corner tr"></span>
+            <span class="sign-corner bl"></span>
+            <span class="sign-corner br"></span>
+            <div class="sign-stars">★ ★ ★</div>
+            <h1 class="sign-title" data-en="SN Cold Store" data-ne="एस.एन. कोल्ड स्टोर">SN Cold Store</h1>
+            <div class="sign-ward-pill" data-en="Bokse Chowk • Next to Veterinary Office" data-ne="त्रियुगा न.पा. १०, बोक्से (भेटेरिनरी नजिक)">Bokse Chowk • Next to Veterinary Office</div>
             <div class="sign-hours-line1" data-en="Open 7 Days a Week" data-ne="हप्ताको ७ दिन खुल्ला">Open 7 Days a Week</div>
             <div class="sign-hours-line2">9 AM - 8 PM</div>
         </div>
 
-        <!-- INTEGRATED VALUE STRIP (LIVE DISTANCE / TIME & MAP BUTTON BELOW LED SIGN) -->
+        <!-- INTEGRATED VALUE STRIP (LIVE DISTANCE / TIME & MAP BUTTON BELOW HERO SIGN) -->
         <div class="live-distance-strip">
             <div class="live-distance-left">
-                <span class="live-distance-title" data-en="📍 Bokse Corridor Distance" data-ne="📍 बोक्से चोक दूरी र समय">📍 Bokse Corridor Distance</span>
+                <span class="live-distance-title" data-en="📍 Bokse Chowk (Next to Veterinary Office)" data-ne="📍 बोक्से चोक (भेटेरिनरी कार्यालय नजिक)">📍 Bokse Chowk (Next to Veterinary Office)</span>
                 <span id="liveDistanceText" class="live-distance-value" data-en="Locating GPS position..." data-ne="स्थान पत्ता लगाउँदै...">Locating GPS position...</span>
             </div>
             <a id="liveDirectionsBtn" href="https://maps.app.goo.gl/TK2ZdVA65D43NWGz5" target="_blank" class="live-distance-map-link" data-en="🗺️ Get Directions" data-ne="🗺️ बाटो हेर्नुहोस्">
@@ -645,7 +795,7 @@
         <div class="calculator-box">
             <div class="calc-header">
                 <span class="calc-badge" data-en="⚡ Quick Party Calculator" data-ne="⚡ पार्टी क्याल्कुलेटर">⚡ Quick Party Calculator</span>
-                <h3 class="calc-title" data-en="SN COLD STORE PARTY CALCULATOR" data-ne="एस एन्ड एन पार्टी क्याल्कुलेटर">SN COLD STORE PARTY CALCULATOR</h3>
+                <h3 class="calc-title" data-en="SN COLD STORE PARTY CALCULATOR" data-ne="एस.एन. पार्टी क्याल्कुलेटर">SN COLD STORE PARTY CALCULATOR</h3>
                 <p class="calc-desc" data-en="Enter your details to calculate exact drink & alcohol volume." data-ne="कार्यक्रमको लागि आवश्यक पेयपदार्थ र मदिराको ठ्याक्कै परिमाण निकाल्नुहोस्।">
                     Enter your details to calculate exact drink & alcohol volume.
                 </p>
@@ -654,7 +804,7 @@
             <!-- Input 1: Name / Location -->
             <div class="calc-form-group">
                 <label class="calc-label" data-en="Your Name / Location (e.g., Hari from Bokse):" data-ne="तपाईंको नाम / स्थान (जस्तै: हरि, बोक्से):">Your Name / Location (e.g., Hari from Bokse):</label>
-                <input type="text" id="customerName" class="calc-input" placeholder="Hari (Bokse Corridor)" required />
+                <input type="text" id="customerName" class="calc-input" placeholder="Hari (Bokse Chowk)" data-en="Hari (Bokse Chowk)" data-ne="हरि (बोक्से चोक)" required />
             </div>
 
             <!-- Input 2: Headcount -->
@@ -679,7 +829,7 @@
                 <input type="tel" id="customerPhone" class="calc-input" placeholder="e.g., 98XXXXXXXX" required />
             </div>
 
-            <p style="margin: 10px 0 5px 0; font-size: 0.85rem; color: #ccc;" data-en="Choose dispatch channel to unlock your quote:" data-ne="अर्डर पठाउन माध्यम छान्नुहोस्:">Choose dispatch channel to unlock your quote:</p>
+            <p style="margin: 10px 0 5px 0; font-size: 0.85rem; color: #f5ebe0;" data-en="Choose dispatch channel to unlock your quote:" data-ne="अर्डर पठाउन माध्यम छान्नुहोस्:">Choose dispatch channel to unlock your quote:</p>
 
             <!-- Action Dispatch Buttons -->
             <div class="calc-actions">
@@ -842,14 +992,14 @@
             </div>
         </div>
 
-        <!-- 6. Snacks, Namkeen, Gutkha & Playing Cards -->
+        <!-- 6. Snacks, Bhujiyas & Playing Cards -->
         <div class="category-card" id="card-snacks" onclick="toggleCard('card-snacks')">
             <div class="category-main-row">
                 <div class="category-left">
                     <div class="category-icon">🃏</div>
                     <div class="category-info">
-                        <h3 data-en="Snacks & Cards" data-ne="खाजा र तास">Snacks & Cards</h3>
-                        <p data-en="Peanuts, Dalmoth, Playing Cards" data-ne="मटर, दालमोट, तास">Peanuts, Dalmoth, Playing Cards</p>
+                        <h3 data-en="Bhujiyas & Playing Cards" data-ne="भुजिया र तास">Bhujiyas & Playing Cards</h3>
+                        <p data-en="Bhujiyas, Playing Cards, Peanuts & Dalmoth" data-ne="भुजिया, तास, मटर र दालमोट">Bhujiyas, Playing Cards, Peanuts & Dalmoth</p>
                     </div>
                 </div>
                 <span class="stock-badge" data-en="Fresh" data-ne="ताजा">Fresh</span>
@@ -896,10 +1046,10 @@
             </div>
         </div>
 
-        <!-- Footer SEO & Location Section -->
-        <div class="footer-section" data-en="📍 SN Cold Store (Raksi Pasal) | Bokse Chowk, Gaighat, Udayapur<br>Your trusted local cold store and wholesale hub along the <strong>Sagarmatha Highway (Gaighat-Diktel Highway)</strong>. Open 7 days a week (9 AM – 8 PM) for ice-cold beverages, spirits, quarters, and daily essentials." data-ne="📍 एस एन्ड एन कोल्ड स्टोर (रक्सी पसल) | बोक्से चोक, गाईघाट, उदयपुर<br>तपाईंको विश्वासीलो स्थानीय कोल्ड स्टोर तथा थोक बिक्रेता <strong>सगरमाथा राजमार्ग (गाईघाट-दिक्तेल राजमार्ग)</strong>। चिसो पेय, स्पिरिट, क्वाटर र दैनिक सामानका लागि हप्ताको ७ दिन (बिहान ९ – बेलुका ८) खुल्ला।">
-            📍 SN Cold Store (Raksi Pasal) | Bokse Chowk, Gaighat, Udayapur<br>
-            Your trusted local cold store and wholesale hub along the <strong>Sagarmatha Highway (Gaighat-Diktel Highway)</strong>. Open 7 days a week (9 AM – 8 PM) for ice-cold beverages, spirits, quarters, and daily essentials.
+        <!-- Footer SEO & Location Section (Inspired by your signboard's navy & gold ribbon) -->
+        <div class="footer-section" data-en="★ <strong>SN Cold Store</strong> • Bokse Chowk next to the Veterinary Office, Sagarmatha Highway (Gaighat–Diktel Highway), Bokse, Gaighat, Triyuga (56300) ★<br>Retail and wholesale cold store serving local regulars, travelers, and everyday gatherings across Bokse, Karangachi, Ratmate, and Chappan. Open 7 days a week (9 AM – 8 PM) for cold beer, drinks, spirits, and quarters, plus bhujiyas and playing cards—call or WhatsApp +977 984-9175714 for chilled call-ahead counter pickup." data-ne="★ <strong>एस.एन. कोल्ड स्टोर</strong> • बोक्से चोक (भेटेरिनरी कार्यालय नजिक), सगरमाथा राजमार्ग (गाईघाट–दिक्तेल राजमार्ग), बोक्से, गाईघाट, त्रियुगा (५६३००) ★<br>बोक्से, करङ्गाछी, रातमाटे र छप्पन क्षेत्रका नियमित ग्राहक, यात्रु तथा जमघटका लागि खुद्रा तथा थोक कोल्ड स्टोर। चिसो बियर, पेय, स्पिरिट, क्वाटर, भुजिया र तासका लागि हप्ताको ७ दिन (बिहान ९ – बेलुका ८) खुल्ला; अग्रिम काउन्टर पिकअपका लागि +९७७ 984-9175714 मा कल वा हवाट्सएप गर्नुहोस्।">
+            ★ <strong>SN Cold Store</strong> • Bokse Chowk next to the Veterinary Office, Sagarmatha Highway (Gaighat–Diktel Highway), Bokse, Gaighat, Triyuga (56300) ★<br>
+            Retail and wholesale cold store serving local regulars, travelers, and everyday gatherings across Bokse, Karangachi, Ratmate, and Chappan. Open 7 days a week (9 AM – 8 PM) for cold beer, drinks, spirits, and quarters, plus bhujiyas and playing cards—call or WhatsApp +977 984-9175714 for chilled call-ahead counter pickup.
         </div>
     </div>
 
@@ -921,6 +1071,7 @@
         const STORE_LAT = 26.9234;
         const STORE_LNG = 86.7123;
         const AVG_SPEED_KMH = 22; // Average local motorbike transit speed
+        const MAX_LOCAL_KM = 150; // Guard against long-distance / out-of-region display glitches
 
         function calculateHaversineDistance(lat1, lon1, lat2, lon2) {
             const R = 6371; // Earth radius in km
@@ -940,10 +1091,16 @@
                     (position) => {
                         const userLat = position.coords.latitude;
                         const userLng = position.coords.longitude;
-                        lastCalculatedKm = calculateHaversineDistance(userLat, userLng, STORE_LAT, STORE_LNG);
-                        lastCalculatedMins = Math.max(1, Math.round((lastCalculatedKm / AVG_SPEED_KMH) * 60));
+                        const distKm = calculateHaversineDistance(userLat, userLng, STORE_LAT, STORE_LNG);
+                        const mins = Math.round((distKm / AVG_SPEED_KMH) * 60);
 
-                        updateProximityDisplay();
+                        if (Number.isFinite(distKm) && distKm > 0 && distKm <= MAX_LOCAL_KM && mins > 0) {
+                            lastCalculatedKm = distKm;
+                            lastCalculatedMins = Math.max(1, mins);
+                            updateProximityDisplay();
+                        } else {
+                            setProximityFallback();
+                        }
 
                         // Dynamically bind turn-by-turn Google Maps routing URL
                         const dirBtn = document.getElementById('liveDirectionsBtn');
@@ -963,7 +1120,7 @@
             const textVal = document.getElementById('liveDistanceText');
             const currentLang = document.getElementById('langSelector').value;
 
-            if (lastCalculatedKm !== null) {
+            if (lastCalculatedKm !== null && lastCalculatedMins !== null) {
                 if (currentLang === 'ne') {
                     textVal.textContent = `${lastCalculatedKm.toFixed(1)} किमी टाढा • ~${lastCalculatedMins} मिनेट राइड`;
                 } else {
@@ -975,10 +1132,15 @@
         }
 
         function setProximityFallback() {
+            lastCalculatedKm = null;
+            lastCalculatedMins = null;
             const textVal = document.getElementById('liveDistanceText');
-            textVal.textContent = "Sagarmatha Highway Hub";
-            textVal.setAttribute('data-en', "Sagarmatha Highway Hub");
-            textVal.setAttribute('data-ne', "सगरमाथा राजमार्ग हब");
+            const currentLang = document.getElementById('langSelector').value;
+            const enText = "Sagarmatha Highway (Gaighat–Diktel Highway) • 9 AM – 8 PM";
+            const neText = "सगरमाथा राजमार्ग (गाईघाट–दिक्तेल राजमार्ग) • बिहान ९ – बेलुका ८";
+            textVal.textContent = currentLang === 'ne' ? neText : enText;
+            textVal.setAttribute('data-en', enText);
+            textVal.setAttribute('data-ne', neText);
         }
 
         function processOrder(channel) {
@@ -1050,7 +1212,7 @@
                     `• चिसो बियर: <strong>~${beerBottles} बोतल</strong><br>` +
                     `• स्पिरिट्स / क्वाटर (Old Durbar / Khukuri): <strong>~${whiskeyQuarters} वटा</strong><br>` +
                     `• बरफ (Ice): <strong>~${icePacks} प्याकेट</strong><br><br>` +
-                    `<span style="color: #4cd137; font-size: 0.85rem;">✓ ${channel.toUpperCase()} मार्फत एस एन्ड एन कोल्ड स्टोरमा अर्डर सफलतापूर्वक पठाइयो!</span>`;
+                    `<span style="color: #4cd137; font-size: 0.85rem;">✓ ${channel.toUpperCase()} मार्फत एस.एन. कोल्ड स्टोरमा अर्डर सफलतापूर्वक पठाइयो!</span>`;
             } else {
                 document.getElementById('outputDetails').innerHTML = 
                     `<strong>For ${headcount} Guests (${customerName} - ${crowdVibe} vibe):</strong><br>` +
