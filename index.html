@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SN Cold Store | Bokse Chowk (Next to Veterinary Office), Gaighat</title>
-    <meta name="description" content="SN Cold Store at Bokse Chowk next to the Veterinary Office along the Sagarmatha Highway (Gaighat–Diktel Highway) in Bokse, Gaighat, Triyuga (56300). Open daily 9 AM–8 PM for chilled beer, drinks, spirits, bhujiyas, playing cards, and call-ahead counter pickup.">
+    <meta name="description" content="SN Cold Store at Bokse Chowk next to the Veterinary Office along the Sagarmatha Highway (Gaighat–Diktel Highway) in Bokse, Gaighat, Triyuga (56300). Open daily 9 AM–8 PM for chilled beer, drinks, spirits, bhujiyas, playing cards, and 10-minute call-ahead counter pickup.">
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Store",
+  "@type": "LiquorStore",
   "name": "SN Cold Store",
   "alternateName": "एस.एन. कोल्ड स्टोर",
   "url": "https://sncoldstore.com/",
   "telephone": "+977-9849175714",
   "priceRange": "$$",
-  "description": "Retail and wholesale cold store at Bokse Chowk next to the Veterinary Office along the Sagarmatha Highway (Gaighat–Diktel Highway) in Bokse, Gaighat, Triyuga (56300). Open daily 9 AM–8 PM for chilled beer, drinks, spirits, bhujiyas, playing cards, and call-ahead counter pickup.",
+  "description": "Retail and wholesale cold store at Bokse Chowk next to the Veterinary Office along the Sagarmatha Highway (Gaighat–Diktel Highway) in Bokse, Gaighat, Triyuga (56300). Open daily 9 AM–8 PM for chilled beer, drinks, spirits, bhujiyas, playing cards, and 10-minute call-ahead counter pickup with free highway parking.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Bokse Chowk (Next to Veterinary Office), Sagarmatha Highway (Gaighat–Diktel Highway)",
-    "addressLocality": "Bokse, Gaighat, Triyuga",
+    "addressLocality": "Bokse, Gaighat, Triyuga Municipality",
     "postalCode": "56300",
     "addressRegion": "Udayapur, Koshi Province",
     "addressCountry": "NP"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 26.9234,
+    "longitude": 86.7123
   },
   "hasMap": "https://maps.app.goo.gl/TK2ZdVA65D43NWGz5?g_st=ic",
   "openingHoursSpecification": [
@@ -39,12 +44,37 @@
       "opens": "09:00",
       "closes": "20:00"
     }
+  ],
+  "areaServed": [
+    { "@type": "City", "name": "Gaighat" },
+    { "@type": "AdministrativeArea", "name": "Triyuga Municipality" },
+    { "@type": "AdministrativeArea", "name": "Udayapur District" },
+    { "@type": "Place", "name": "Sagarmatha Highway" },
+    { "@type": "Place", "name": "Bokse (Sunrise Chowk & Sagarmatha Highway)" },
+    { "@type": "Place", "name": "Karamgachhi (Karamgachhi Chowk & Jipraka Area)" },
+    { "@type": "Place", "name": "Ratmate" },
+    { "@type": "Place", "name": "Chappan (Chappan Chauri & Baruwa Khola Bridge Area)" },
+    { "@type": "Place", "name": "Dhimki" },
+    { "@type": "Place", "name": "Main Chowk & Pipalchowk (Pipal Bote)" },
+    { "@type": "Place", "name": "Sangam Tol (East & West)" },
+    { "@type": "Place", "name": "Kanchenjunga Tol & Sakela Tol" },
+    { "@type": "Place", "name": "Khasi Bazar & Naya Basti" },
+    { "@type": "Place", "name": "Tarkari Bazar & Babarani Marg" },
+    { "@type": "Place", "name": "Pragati Tol & Dhamala Tol" },
+    { "@type": "Place", "name": "Purano Quarterline & Mitra Marg" },
+    { "@type": "Place", "name": "Smart City Tol (Lachka)" },
+    { "@type": "Place", "name": "Rajabas" },
+    { "@type": "Place", "name": "Motigada" },
+    { "@type": "Place", "name": "Bagaha" },
+    { "@type": "Place", "name": "Deuri" },
+    { "@type": "Place", "name": "Chuhade" },
+    { "@type": "Place", "name": "Dhalke" },
+    { "@type": "Place", "name": "Jalajale" }
   ]
 }
 </script>
     <style>
         :root {
-            /* Palette inspired by your physical signboard (crimson, gold, navy) & shopfront (warm rose/pink, timber wood, warm golden banner) */
             --bg-cream: #fdf8f2;
             --bg-tint: #f8ece6;
             --sign-crimson: #c62828;
@@ -222,7 +252,6 @@
             animation: borderPulse 2.2s infinite alternate;
         }
 
-        /* Corner triangles inspired by your physical signboard frame */
         .sign-corner {
             position: absolute;
             width: 0;
@@ -306,7 +335,7 @@
             text-shadow: 0 0 10px rgba(0, 245, 212, 0.75);
         }
 
-        /* --- INTEGRATED LIVE DISTANCE STRIP (NAVY & GOLD SIGNBOARD RIBBON) --- */
+        /* --- INTEGRATED LIVE DISTANCE STRIP --- */
         .live-distance-strip {
             width: 100%;
             background: var(--sign-navy);
@@ -359,7 +388,7 @@
             filter: brightness(1.06);
         }
 
-        /* Bulk & Event Notice Banner (Inspired by warm golden storefront fascia banner) */
+        /* Bulk & Event Notice Banner */
         .event-banner {
             width: 100%;
             background: linear-gradient(135deg, #fff5d6 0%, #fde6a8 100%);
@@ -434,7 +463,7 @@
             background-color: #1f3554;
         }
 
-        /* --- INTEGRATED PARTY CALCULATOR SECTION (WARM TIMBER COUNTER & GOLD TRIM) --- */
+        /* --- INTEGRATED PARTY CALCULATOR SECTION --- */
         .calculator-box {
             width: 100%;
             background: linear-gradient(180deg, var(--wood-brown) 0%, var(--wood-dark) 100%);
@@ -578,7 +607,7 @@
             color: #f5ebe0;
         }
 
-        /* Categories Section (Inspired by your shop's rose-pink walls & crisp white shelf lines) */
+        /* Categories Section */
         .categories-header {
             width: 100%;
             font-size: 13px;
@@ -708,7 +737,218 @@
             font-size: 13px;
         }
 
-        /* Footer SEO & Location Section (Inspired by your signboard's bottom navy & gold ribbon) */
+        /* --- COLLAPSIBLE PLACES WE SERVE DRAWER (CLEAN UI + FULL SEO INDEXING) --- */
+        .service-area-drawer {
+            width: 100%;
+            background: #ffffff;
+            border: 1.5px solid #e6c89c;
+            border-left: 4px solid var(--sign-gold);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(74, 46, 29, 0.06);
+            overflow: hidden;
+        }
+
+        .service-area-summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 11px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            background: #fdf8f2;
+            user-select: none;
+        }
+
+        .service-area-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .service-area-summary-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .service-area-summary-title {
+            font-size: 0.84rem;
+            font-weight: 800;
+            color: var(--sign-navy);
+        }
+
+        .service-area-summary-sub {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .service-area-toggle-pill {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--wood-dark);
+            background: #fef3c7;
+            border: 1px solid #f3c64f;
+            padding: 4px 9px;
+            border-radius: 999px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .service-area-drawer[open] .service-area-toggle-pill::after {
+            content: " ▲";
+        }
+
+        .service-area-drawer:not([open]) .service-area-toggle-pill::after {
+            content: " ▼";
+        }
+
+        .service-area-body {
+            padding: 14px;
+            border-top: 1px dashed #e6c89c;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .service-area-intro {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        .value-props-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .value-prop-pill {
+            background: #fdf8f2;
+            border: 1px solid #ecd6b5;
+            border-radius: 8px;
+            padding: 7px 5px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .value-prop-icon {
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .value-prop-text {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--wood-dark);
+            line-height: 1.2;
+        }
+
+        .zone-card {
+            background: #fdf9f7;
+            border: 1px solid #ecd9df;
+            border-left: 4px solid var(--sign-crimson);
+            border-radius: 9px;
+            padding: 10px 11px;
+        }
+
+        .zone-card.zone-2 {
+            border-left-color: var(--sign-gold);
+            background: #fffdf7;
+            border-color: #efe1bc;
+        }
+
+        .zone-card.zone-3 {
+            border-left-color: var(--sign-navy);
+            background: #f7f9fc;
+            border-color: #d8e1ee;
+        }
+
+        .zone-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 7px;
+            flex-wrap: wrap;
+        }
+
+        .zone-name {
+            font-size: 0.81rem;
+            font-weight: 800;
+            color: var(--wood-dark);
+        }
+
+        .zone-time-badge {
+            font-size: 0.67rem;
+            font-weight: 800;
+            background: var(--sign-crimson);
+            color: #ffffff;
+            padding: 2px 8px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .zone-card.zone-2 .zone-time-badge {
+            background: var(--sign-gold);
+            color: #1c1917;
+        }
+
+        .zone-card.zone-3 .zone-time-badge {
+            background: var(--sign-navy);
+            color: #ffffff;
+        }
+
+        .tol-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            list-style: none;
+        }
+
+        .tol-chip {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #292524;
+            background: #ffffff;
+            border: 1px solid #e5d7dc;
+            padding: 3px 7px;
+            border-radius: 6px;
+            line-height: 1.25;
+        }
+
+        .zone-card.zone-2 .tol-chip {
+            border-color: #eadbb3;
+        }
+
+        .zone-card.zone-3 .tol-chip {
+            border-color: #d3deec;
+        }
+
+        .service-area-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            background: #25D366;
+            color: #ffffff;
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 10px 12px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(37, 211, 102, 0.25);
+            transition: background 0.2s;
+        }
+
+        .service-area-cta:hover {
+            background: #20ba5a;
+        }
+
+        /* Footer SEO & Location Section */
         .footer-section {
             width: 100%;
             background: var(--sign-navy);
@@ -717,7 +957,7 @@
             border-radius: 12px;
             text-align: center;
             font-size: 12px;
-            margin-top: 12px;
+            margin-top: 4px;
             padding: 16px 14px;
             line-height: 1.55;
             box-shadow: 0 6px 16px rgba(20, 36, 59, 0.16);
@@ -1046,10 +1286,97 @@
             </div>
         </div>
 
-        <!-- Footer SEO & Location Section (Inspired by your signboard's navy & gold ribbon) -->
-        <div class="footer-section" data-en="★ <strong>SN Cold Store</strong> • Bokse Chowk next to the Veterinary Office, Sagarmatha Highway (Gaighat–Diktel Highway), Bokse, Gaighat, Triyuga (56300) ★<br>Retail and wholesale cold store serving local regulars, travelers, and everyday gatherings across Bokse, Karangachi, Ratmate, and Chappan. Open 7 days a week (9 AM – 8 PM) for cold beer, drinks, spirits, and quarters, plus bhujiyas and playing cards—call or WhatsApp +977 984-9175714 for chilled call-ahead counter pickup." data-ne="★ <strong>एस.एन. कोल्ड स्टोर</strong> • बोक्से चोक (भेटेरिनरी कार्यालय नजिक), सगरमाथा राजमार्ग (गाईघाट–दिक्तेल राजमार्ग), बोक्से, गाईघाट, त्रियुगा (५६३००) ★<br>बोक्से, करङ्गाछी, रातमाटे र छप्पन क्षेत्रका नियमित ग्राहक, यात्रु तथा जमघटका लागि खुद्रा तथा थोक कोल्ड स्टोर। चिसो बियर, पेय, स्पिरिट, क्वाटर, भुजिया र तासका लागि हप्ताको ७ दिन (बिहान ९ – बेलुका ८) खुल्ला; अग्रिम काउन्टर पिकअपका लागि +९७७ 984-9175714 मा कल वा हवाट्सएप गर्नुहोस्।">
+        <!-- COLLAPSIBLE PLACES WE SERVE DRAWER (CLEAN BY DEFAULT, OPENS ON TAP, INDEXABLE BY SEARCH ENGINES) -->
+        <details class="service-area-drawer" id="placesWeServeDrawer">
+            <summary class="service-area-summary">
+                <div class="service-area-summary-left">
+                    <span class="service-area-summary-title" data-en="📍 Places We Serve Around Bokse & Gaighat" data-ne="📍 बोक्से र गाईघाट आसपासका सेवा क्षेत्रहरू">📍 Places We Serve Around Bokse & Gaighat</span>
+                    <span class="service-area-summary-sub" data-en="2–15 min motorbike ride • 20+ Gaighat & Triyuga tols" data-ne="२–१५ मिनेट मोटरसाइकल दूरी • २०+ गाईघाट र त्रियुगा टोलहरू">2–15 min motorbike ride • 20+ Gaighat & Triyuga tols</span>
+                </div>
+                <span class="service-area-toggle-pill" data-en="View Areas" data-ne="क्षेत्र हेर्नुहोस्">View Areas</span>
+            </summary>
+
+            <div class="service-area-body">
+                <p class="service-area-intro" data-en="Located right on the <strong>Sagarmatha Highway</strong> at Bokse Chowk (next to the Veterinary Office, Ward 10, Triyuga Municipality, Gaighat, Udayapur)—a fast motorbike run from every neighborhood and tol below." data-ne="<strong>सगरमाथा राजमार्ग</strong>को बोक्से चोक (भेटेरिनरी कार्यालय नजिक, वडा नं. १०, त्रियुगा नगरपालिका, गाईघाट, उदयपुर) मा अवस्थित—तलका सबै टोल र क्षेत्रहरूबाट केही मिनेटको मोटरसाइकल दूरीमा।">
+                    Located right on the <strong>Sagarmatha Highway</strong> at Bokse Chowk (next to the Veterinary Office, Ward 10, Triyuga Municipality, Gaighat, Udayapur)—a fast motorbike run from every neighborhood and tol below.
+                </p>
+
+                <!-- Key Value Props -->
+                <div class="value-props-grid">
+                    <div class="value-prop-pill">
+                        <span class="value-prop-icon">❄️</span>
+                        <span class="value-prop-text" data-en="10-Min Chilled Pickup" data-ne="१० मिनेटमा चिसो पिकअप">10-Min Chilled Pickup</span>
+                    </div>
+                    <div class="value-prop-pill">
+                        <span class="value-prop-icon">🅿️</span>
+                        <span class="value-prop-text" data-en="Free Highway Parking" data-ne="निःशुल्क राजमार्ग पार्किङ">Free Highway Parking</span>
+                    </div>
+                    <div class="value-prop-pill">
+                        <span class="value-prop-icon">📦</span>
+                        <span class="value-prop-text" data-en="Wholesale & Retail" data-ne="थोक तथा खुद्रा उपलब्ध">Wholesale & Retail</span>
+                    </div>
+                </div>
+
+                <!-- Zone 1 -->
+                <div class="zone-card zone-1">
+                    <div class="zone-header-row">
+                        <span class="zone-name" data-en="Zone 1: Immediate Bokse & Highway" data-ne="जोन १: नजिकको बोक्से र राजमार्ग क्षेत्र">Zone 1: Immediate Bokse & Highway</span>
+                        <span class="zone-time-badge" data-en="🏍️ 2–7 Mins from Bokse" data-ne="🏍️ २–७ मिनेट दूरी">🏍️ 2–7 Mins from Bokse</span>
+                    </div>
+                    <ul class="tol-chips">
+                        <li class="tol-chip">Bokse (Sunrise Chowk &amp; Sagarmatha Highway)</li>
+                        <li class="tol-chip">Karamgachhi (Karamgachhi Chowk &amp; Jipraka Area)</li>
+                        <li class="tol-chip">Ratmate</li>
+                        <li class="tol-chip">Chappan (Chappan Chauri &amp; Baruwa Khola Bridge Area)</li>
+                        <li class="tol-chip">Dhimki</li>
+                    </ul>
+                </div>
+
+                <!-- Zone 2 -->
+                <div class="zone-card zone-2">
+                    <div class="zone-header-row">
+                        <span class="zone-name" data-en="Zone 2: Central Gaighat &amp; Main Bazar" data-ne="जोन २: मुख्य गाईघाट र बजार क्षेत्र">Zone 2: Central Gaighat &amp; Main Bazar</span>
+                        <span class="zone-time-badge" data-en="🏍️ 5–12 Mins from Bokse" data-ne="🏍️ ५–१२ मिनेट दूरी">🏍️ 5–12 Mins from Bokse</span>
+                    </div>
+                    <ul class="tol-chips">
+                        <li class="tol-chip">Main Chowk &amp; Pipalchowk (Pipal Bote)</li>
+                        <li class="tol-chip">Sangam Tol (East &amp; West)</li>
+                        <li class="tol-chip">Kanchenjunga Tol &amp; Sakela Tol</li>
+                        <li class="tol-chip">Khasi Bazar &amp; Naya Basti</li>
+                        <li class="tol-chip">Tarkari Bazar &amp; Babarani Marg</li>
+                        <li class="tol-chip">Pragati Tol &amp; Dhamala Tol</li>
+                        <li class="tol-chip">Purano Quarterline &amp; Mitra Marg</li>
+                        <li class="tol-chip">Smart City Tol (Lachka)</li>
+                    </ul>
+                </div>
+
+                <!-- Zone 3 -->
+                <div class="zone-card zone-3">
+                    <div class="zone-header-row">
+                        <span class="zone-name" data-en="Zone 3: Extended Triyuga Areas" data-ne="जोन ३: विस्तारित त्रियुगा क्षेत्र">Zone 3: Extended Triyuga Areas</span>
+                        <span class="zone-time-badge" data-en="🏍️ 10–15 Mins from Bokse" data-ne="🏍️ १०–१५ मिनेट दूरी">🏍️ 10–15 Mins from Bokse</span>
+                    </div>
+                    <ul class="tol-chips">
+                        <li class="tol-chip">Rajabas</li>
+                        <li class="tol-chip">Motigada</li>
+                        <li class="tol-chip">Bagaha</li>
+                        <li class="tol-chip">Deuri</li>
+                        <li class="tol-chip">Chuhade</li>
+                        <li class="tol-chip">Dhalke</li>
+                        <li class="tol-chip">Jalajale</li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/9779849175714?text=Hi%20SN%20Cold%20Store!%20I%20want%20to%20place%20a%2010-min%20chilled%20call-ahead%20counter%20pickup%20order." target="_blank" class="service-area-cta" data-en="💬 WhatsApp for 10-Min Chilled Counter Pickup" data-ne="💬 १०-मिनेट चिसो काउन्टर पिकअपको लागि हवाट्सएप गर्नुहोस्">
+                    💬 WhatsApp for 10-Min Chilled Counter Pickup
+                </a>
+            </div>
+        </details>
+
+        <!-- Footer SEO & Location Section -->
+        <div class="footer-section" data-en="★ <strong>SN Cold Store</strong> • Bokse Chowk next to the Veterinary Office, Sagarmatha Highway (Gaighat–Diktel Highway), Bokse, Gaighat, Triyuga (56300) ★<br>Retail and wholesale cold store serving local regulars, travelers, and everyday gatherings across Bokse, Karamgachhi, Ratmate, Chappan, and Gaighat. Open 7 days a week (9 AM – 8 PM) for cold beer, drinks, spirits, and quarters, plus bhujiyas and playing cards—call or WhatsApp +977 984-9175714 for 10-minute chilled call-ahead counter pickup and free highway parking." data-ne="★ <strong>एस.एन. कोल्ड स्टोर</strong> • बोक्से चोक (भेटेरिनरी कार्यालय नजिक), सगरमाथा राजमार्ग (गाईघाट–दिक्तेल राजमार्ग), बोक्से, गाईघाट, त्रियुगा (५६३००) ★<br>बोक्से, करङ्गाछी, रातमाटे, छप्पन र गाईघाट क्षेत्रका नियमित ग्राहक, यात्रु तथा जमघटका लागि खुद्रा तथा थोक कोल्ड स्टोर। चिसो बियर, पेय, स्पिरिट, क्वाटर, भुजिया र तासका लागि हप्ताको ७ दिन (बिहान ९ – बेलुका ८) खुल्ला; १०-मिनेट अग्रिम काउन्टर पिकअप र निःशुल्क पार्किङका लागि +९७७ 984-9175714 मा कल वा हवाट्सएप गर्नुहोस्।">
             ★ <strong>SN Cold Store</strong> • Bokse Chowk next to the Veterinary Office, Sagarmatha Highway (Gaighat–Diktel Highway), Bokse, Gaighat, Triyuga (56300) ★<br>
-            Retail and wholesale cold store serving local regulars, travelers, and everyday gatherings across Bokse, Karangachi, Ratmate, and Chappan. Open 7 days a week (9 AM – 8 PM) for cold beer, drinks, spirits, and quarters, plus bhujiyas and playing cards—call or WhatsApp +977 984-9175714 for chilled call-ahead counter pickup.
+            Retail and wholesale cold store serving local regulars, travelers, and everyday gatherings across Bokse, Karamgachhi, Ratmate, Chappan, and Gaighat. Open 7 days a week (9 AM – 8 PM) for cold beer, drinks, spirits, and quarters, plus bhujiyas and playing cards—call or WhatsApp +977 984-9175714 for 10-minute chilled call-ahead counter pickup and free highway parking.
         </div>
     </div>
 
