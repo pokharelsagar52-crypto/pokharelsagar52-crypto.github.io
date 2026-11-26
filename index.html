@@ -721,6 +721,12 @@
             font-size: 14px;
             font-weight: 500;
             color: #292524;
+            transition: opacity 0.2s ease;
+        }
+
+        .brand-item[data-available="false"] {
+            opacity: 0.58;
+            background: #f5f5f4;
         }
 
         .brand-sub-badge {
@@ -730,6 +736,12 @@
             padding: 2px 7px;
             border-radius: 4px;
             font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .brand-item[data-available="false"] .brand-sub-badge {
+            background: #fee2e2;
+            color: #991b1b;
         }
 
         .dropdown-actions {
@@ -1587,6 +1599,99 @@
                 updateProximityDisplay();
             }
         }
+    </script>
+
+    <!-- LIVE INVENTORY SYNC & AI OFFERCATALOG SCHEMA -->
+    <script>
+    (function enhanceStorefrontForAIAndLiveStock() {
+        const API_BASE = "https://sn-cold-backend.onrender.com"; // Change to Render URL when deployed
+
+        function normalize(str) {
+            return String(str || "").trim().toLowerCase();
+        }
+
+        document.querySelectorAll(".brand-item").forEach((row) => {
+            const labelEl = row.querySelector("span:first-child");
+            if (!labelEl) return;
+            const raw = labelEl.textContent.trim();
+            row.setAttribute("data-item-label", raw);
+            row.setAttribute("data-available", "true");
+        });
+
+        function updateJsonLdCatalog(items) {
+            const ldScript = document.querySelector('script[type="application/ld+json"]');
+            if (!ldScript) return;
+
+            try {
+                const schema = JSON.parse(ldScript.textContent);
+                const sourceItems = Array.isArray(items) && items.length
+                    ? items
+                    : Array.from(document.querySelectorAll(".brand-item")).map((row, index) => {
+                        const card = row.closest(".category-card");
+                        const catTitle = card ? card.querySelector(".category-info h3")?.textContent?.trim() : "Store Item";
+                        return {
+                            name: row.getAttribute("data-item-label") || `Item ${index + 1}`,
+                            category: catTitle || "Store Item",
+                            available: row.getAttribute("data-available") !== "false"
+                        };
+                    });
+
+                schema.hasOfferCatalog = {
+                    "@type": "OfferCatalog",
+                    "name": "SN Cold Store Retail & Wholesale Inventory",
+                    "itemListElement": sourceItems.map((item, idx) => ({
+                        "@type": "Offer",
+                        "position": idx + 1,
+                        "availability": item.available === false
+                            ? "https://schema.org/OutOfStock"
+                            : "https://schema.org/InStock",
+                        "itemOffered": {
+                            "@type": "Product",
+                            "name": item.size ? `${item.name} (${item.size})` : item.name,
+                            "category": item.category || "Beverage"
+                        }
+                    }))
+                };
+
+                ldScript.textContent = JSON.stringify(schema, null, 2);
+            } catch (_) {
+                // Keep original JSON-LD untouched if parsing ever fails
+            }
+        }
+
+        updateJsonLdCatalog(null);
+
+        fetch(`${API_BASE}/api/items`, { cache: "no-store" })
+            .then((res) => (res.ok ? res.json() : null))
+            .then((items) => {
+                if (!Array.isArray(items) || !items.length) return;
+
+                const outMatchers = items
+                    .filter((i) => i.available === false)
+                    .map((i) => normalize(i.name))
+                    .filter(Boolean);
+
+                document.querySelectorAll(".brand-item").forEach((row) => {
+                    const rowText = normalize(row.getAttribute("data-item-label"));
+                    const baseRowName = rowText.split("(")[0].trim();
+                    const isOut = outMatchers.some((outName) =>
+                        rowText.includes(outName) || outName.includes(baseRowName)
+                    );
+                    row.setAttribute("data-available", String(!isOut));
+                    const badge = row.querySelector(".brand-sub-badge");
+                    if (badge && isOut) {
+                        badge.textContent = "Out of Stock";
+                        badge.setAttribute("data-en", "Out of Stock");
+                        badge.setAttribute("data-ne", "स्टक सकियो");
+                    }
+                });
+
+                updateJsonLdCatalog(items);
+            })
+            .catch(() => {
+                // Backend offline: keep current static page and initial JSON-LD intact
+            });
+    })();
     </script>
 
 </body>
