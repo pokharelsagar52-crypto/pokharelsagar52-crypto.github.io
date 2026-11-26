@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>SN Cold Store — Staff Inventory</title>
+<style>
+:root {
+  --bg: #111111;
+  --surface: #1a1a1a;
+  --surface-2: #242424;
+  --border: #2f2f2f;
+  --orange: #f77f00;
+  --cyan: #00f5d4;
+  --amber: #ffb703;
+  --green: #22c55e;
+  --red: #ef4444;
+  --text: #ffffff;
+  --muted: #a3a3a3;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding-bottom: 40px;
+}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(17, 17, 17, 0.95);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.brand {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--orange);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.brand span {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--cyan);
+  font-weight: 600;
+}
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 16px;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+.card h2 {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+  color: var(--amber);
+}
+.card p {
+  margin: 0 0 16px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+input, select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 1rem;
+  margin-bottom: 12px;
+  outline: none;
+}
+input:focus, select:focus { border-color: var(--orange); }
+.btn {
+  width: 100%;
+  padding: 13px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.98rem;
+  font-weight: 800;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.btn-primary { background: var(--orange); color: #111; }
+.btn-sm {
+  width: auto;
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+.error-msg {
+  color: var(--red);
+  font-size: 0.85rem;
+  margin-top: 8px;
+  min-height: 20px;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.stat-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+.stat-box strong { display: block; font-size: 1.25rem; }
+.stat-box span { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; }
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.toolbar-row { display: flex; gap: 8px; }
+.toolbar input, .toolbar select { margin-bottom: 0; }
+.pills {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  scrollbar-width: none;
+}
+.pills::-webkit-scrollbar { display: none; }
+.pill {
+  white-space: nowrap;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.pill.active {
+  background: var(--orange);
+  color: #111;
+  border-color: var(--orange);
+}
+.item-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.item-card.out {
+  border-color: rgba(239, 68, 68, 0.45);
+  background: #171212;
+}
+.item-info { min-width: 0; flex: 1; }
+.item-name {
+  font-weight: 700;
+  font-size: 0.98rem;
+  margin-bottom: 4px;
+  word-break: break-word;
+}
+.item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.badge {
+  background: var(--surface-2);
+  padding: 2px 8px;
+  border-radius: 6px;
+  color: var(--cyan);
+  font-weight: 600;
+}
+.stock-btn {
+  min-width: 112px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.stock-btn.in-stock {
+  background: rgba(34, 197, 94, 0.16);
+  color: var(--green);
+  border: 1px solid rgba(34, 197, 94, 0.45);
+}
+.stock-btn.out-stock {
+  background: rgba(239, 68, 68, 0.18);
+  color: var(--red);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+}
+.stock-btn:disabled { opacity: 0.5; cursor: wait; }
+.toast {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  border: 1px solid var(--cyan);
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 50;
+  display: none;
+}
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+<header>
+<div class="brand">
+  SN Cold Store
+  <span>Bokse Chowk — Staff Stock Control</span>
+</div>
+<div id="headerActions" class="hidden" style="display:flex; gap:8px;">
+  <button class="btn-sm" id="toggleAddBtn">+ Add</button>
+  <button class="btn-sm" id="logoutBtn">Logout</button>
+</div>
+</header>
+
+<div class="container">
+<div id="loginView" class="card">
+  <h2>Staff Login</h2>
+  <p>Sign in to update live stock availability for Gaighat / Bokse store.</p>
+  <form id="loginForm">
+    <label for="staffId">Staff ID</label>
+    <input id="staffId" type="text" placeholder="sn_staff" autocomplete="username" required />
+    <label for="password">Password</label>
+    <input id="password" type="password" placeholder="Enter password" autocomplete="current-password" required />
+    <button class="btn btn-primary" type="submit" id="loginSubmitBtn">Sign In</button>
+    <div class="error-msg" id="loginError"></div>
+  </form>
+</div>
+
+<div id="dashboardView" class="hidden">
+  <div id="addItemCard" class="card hidden">
+    <h2>Add New Product</h2>
+    <p>Add a new drink, spirit, or snack item to the live menu.</p>
+    <form id="addItemForm">
+      <label for="newName">Item Name *</label>
+      <input id="newName" type="text" placeholder="e.g. Gorkha Strong Can" required />
+      <label for="newSize">Size / Pack</label>
+      <input id="newSize" type="text" placeholder="e.g. 500ml" />
+      <label for="newCategory">Category *</label>
+      <select id="newCategory" required>
+        <option value="Beer">Beer</option>
+        <option value="Wine">Wine</option>
+        <option value="Vodka">Vodka</option>
+        <option value="Whiskey">Whiskey</option>
+        <option value="Rum">Rum</option>
+        <option value="Soft Drinks">Soft Drinks</option>
+        <option value="Energy Drinks">Energy Drinks</option>
+        <option value="Other Beverages">Other Beverages</option>
+        <option value="Cigarettes">Cigarettes</option>
+        <option value="Gutkha">Gutkha</option>
+        <option value="Snacks">Snacks</option>
+      </select>
+      <button class="btn btn-primary" type="submit">Save Item</button>
+    </form>
+  </div>
+
+  <div class="stats">
+    <div class="stat-box"><strong id="totalCount">0</strong><span>Total Items</span></div>
+    <div class="stat-box"><strong id="inStockCount" style="color: var(--green);">0</strong><span>In Stock</span></div>
+    <div class="stat-box"><strong id="outStockCount" style="color: var(--red);">0</strong><span>Out of Stock</span></div>
+  </div>
+
+  <div class="toolbar">
+    <input id="searchInput" type="search" placeholder="Search item name or size (e.g. 8848, 650ml, Coke)..." />
+    <div class="toolbar-row">
+      <select id="statusFilter">
+        <option value="all">All Stock Status</option>
+        <option value="in">In Stock Only</option>
+        <option value="out">Out of Stock Only</option>
+      </select>
+      <button class="btn-sm" id="refreshBtn" style="white-space:nowrap;">Refresh</button>
+    </div>
+  </div>
+
+  <div class="pills" id="categoryPills"></div>
+  <div id="itemsList"></div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API_BASE = "https://sn-cold-backend.onrender.com";
+let token = localStorage.getItem("sn_staff_token") || "";
+let allItems = [];
+let selectedCategory = "All";
+
+const loginView = document.getElementById("loginView");
+const dashboardView = document.getElementById("dashboardView");
+const headerActions = document.getElementById("headerActions");
+const loginForm = document.getElementById("loginForm");
+const loginError = document.getElementById("loginError");
+const itemsList = document.getElementById("itemsList");
+const categoryPills = document.getElementById("categoryPills");
+const searchInput = document.getElementById("searchInput");
+const statusFilter = document.getElementById("statusFilter");
+const addItemCard = document.getElementById("addItemCard");
+const toastEl = document.getElementById("toast");
+
+function showToast(msg) {
+  toastEl.textContent = msg;
+  toastEl.style.display = "block";
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => { toastEl.style.display = "none"; }, 2200);
+}
+
+function setLoggedIn(isLoggedIn) {
+  if (isLoggedIn) {
+    loginView.classList.add("hidden");
+    dashboardView.classList.remove("hidden");
+    headerActions.classList.remove("hidden");
+    loadItems();
+  } else {
+    loginView.classList.remove("hidden");
+    dashboardView.classList.add("hidden");
+    headerActions.classList.add("hidden");
+  }
+}
+
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  loginError.textContent = "";
+  const btn = document.getElementById("loginSubmitBtn");
+  btn.disabled = true;
+  btn.textContent = "Signing in...";
+  try {
+    const res = await fetch(`${API_BASE}/api/staff/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        staffId: document.getElementById("staffId").value.trim(),
+        password: document.getElementById("password").value
+      })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || data.message || "Invalid credentials");
+    token = data.token;
+    localStorage.setItem("sn_staff_token", token);
+    setLoggedIn(true);
+    showToast("Logged in");
+  } catch (err) {
+    loginError.textContent = err.message;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Sign In";
+  }
+});
+
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  token = "";
+  localStorage.removeItem("sn_staff_token");
+  setLoggedIn(false);
+});
+
+document.getElementById("toggleAddBtn").addEventListener("click", () => {
+  addItemCard.classList.toggle("hidden");
+});
+
+document.getElementById("refreshBtn").addEventListener("click", () => {
+  loadItems();
+  showToast("Inventory refreshed");
+});
+
+async function loadItems() {
+  itemsList.innerHTML = `<p style="color:var(--muted); text-align:center;">Loading inventory...</p>`;
+  try {
+    const res = await fetch(`${API_BASE}/api/items`);
+    if (!res.ok) throw new Error("Failed to fetch items");
+    allItems = await res.json();
+    renderCategories();
+    renderItems();
+  } catch (err) {
+    itemsList.innerHTML = `<p style="color:var(--red); text-align:center;">Could not load items: ${err.message}</p>`;
+  }
+}
+
+function renderCategories() {
+  const cats = ["All", ...new Set(allItems.map((i) => i.category).filter(Boolean))];
+  categoryPills.innerHTML = cats
+    .map((c) => `<button class="pill ${c === selectedCategory ? "active" : ""}" data-cat="${c}">${c}</button>`)
+    .join("");
+  categoryPills.querySelectorAll(".pill").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      selectedCategory = btn.dataset.cat;
+      renderCategories();
+      renderItems();
+    });
+  });
+}
+
+function renderItems() {
+  const q = searchInput.value.trim().toLowerCase();
+  const status = statusFilter.value;
+  const total = allItems.length;
+  const inCount = allItems.filter((i) => i.available).length;
+  document.getElementById("totalCount").textContent = total;
+  document.getElementById("inStockCount").textContent = inCount;
+  document.getElementById("outStockCount").textContent = total - inCount;
+
+  const filtered = allItems.filter((item) => {
+    const matchesCat = selectedCategory === "All" || item.category === selectedCategory;
+    const matchesStatus = status === "all" || (status === "in" && item.available) || (status === "out" && !item.available);
+    const matchesQuery = !q ||
+      (item.name && item.name.toLowerCase().includes(q)) ||
+      (item.size && item.size.toLowerCase().includes(q)) ||
+      (item.category && item.category.toLowerCase().includes(q));
+    return matchesCat && matchesStatus && matchesQuery;
+  });
+
+  if (!filtered.length) {
+    itemsList.innerHTML = `<p style="color:var(--muted); text-align:center; padding:24px 0;">No matching items found.</p>`;
+    return;
+  }
+
+  itemsList.innerHTML = filtered.map((item) => `
+    <div class="item-card ${item.available ? "" : "out"}">
+      <div class="item-info">
+        <div class="item-name">${escapeHtml(item.name)}</div>
+        <div class="item-meta">
+          ${item.size ? `<span class="badge">${escapeHtml(item.size)}</span>` : ""}
+          <span>${escapeHtml(item.category || "")}</span>
+        </div>
+      </div>
+      <button class="stock-btn ${item.available ? "in-stock" : "out-stock"}" onclick="toggleAvailability('${item._id}', ${!item.available}, this)">
+        ${item.available ? "In Stock" : "Out"}
+      </button>
+    </div>
+  `).join("");
+}
+
+async function toggleAvailability(id, nextAvailable, btnEl) {
+  btnEl.disabled = true;
+  try {
+    const res = await fetch(`${API_BASE}/api/items/${id}/availability`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ available: nextAvailable })
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      if (res.status === 401 || res.status === 403) {
+        localStorage.removeItem("sn_staff_token");
+        setLoggedIn(false);
+        throw new Error("Session expired. Please sign in again.");
+      }
+      throw new Error(data.error || data.message || "Update failed");
+    }
+    const idx = allItems.findIndex((i) => i._id === id);
+    if (idx !== -1) allItems[idx].available = nextAvailable;
+    renderItems();
+    showToast(nextAvailable ? "Marked In Stock" : "Marked Out of Stock");
+  } catch (err) {
+    showToast(err.message);
+    btnEl.disabled = false;
+  }
+}
+
+document.getElementById("addItemForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const name = document.getElementById("newName").value.trim();
+  const size = document.getElementById("newSize").value.trim();
+  const category = document.getElementById("newCategory").value;
+  try {
+    const res = await fetch(`${API_BASE}/api/items`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ name, size, category, available: true })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || data.message || "Could not add item");
+    document.getElementById("addItemForm").reset();
+    addItemCard.classList.add("hidden");
+    await loadItems();
+    showToast(`Added ${name}`);
+  } catch (err) {
+    showToast(err.message);
+  }
+});
+
+function escapeHtml(str) {
+  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+searchInput.addEventListener("input", renderItems);
+statusFilter.addEventListener("change", renderItems);
+if (token) setLoggedIn(true);
+</script>
+</body>
+</html>
